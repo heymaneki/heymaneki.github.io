@@ -394,12 +394,14 @@
       .avatar-wrap { width: 62px; height: 62px; }
       .hero-title h1 { font-size: 1.65rem; }
     }
-    /* Lucky cat — all colors inherit the existing theme. */
+    /* Lucky cat — fixed colors so it is the same white calico in both themes. */
+    .cat-perch { --cat-fur: #fffaf2; --cat-line: #1e1b18; --cat-orange: #e0773f; --cat-dark: #3a332d; --cat-red: #c4501f; --cat-gold: #f5c451; --cat-blush: #f4a9bb; }
     .hero { position: relative; margin-top: 6rem; }
     .hero-top { padding-right: 8.5rem; }
     .cat-perch { position: absolute; right: 1.1rem; top: -5.6rem; width: 136px; z-index: 1; }
     .cat-button { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 0; border: 0; background: none; color: var(--text); cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
     .cat-art { width: 100%; height: auto; overflow: visible; }
+    [data-theme="dark"] .cat-art { filter: drop-shadow(0 0 1.2px rgba(255, 250, 242, .7)); }
     .cat-label { margin-top: -3px; padding: 2px 10px; font-family: inherit; font-size: .72rem; font-weight: 700; line-height: 1.6; background: var(--card); border: 1.5px solid var(--ink); border-radius: 999px; box-shadow: var(--shadow-sm); white-space: nowrap; }
     .cat-button:hover .cat-label { background: var(--card-alt); }
     .cat-button:focus-visible { outline: 3px solid var(--text); outline-offset: 5px; border-radius: 18px; }
@@ -474,53 +476,54 @@
         <button class="cat-button" id="catButton" type="button" aria-label="Lucky cat: get a fortune" aria-expanded="false" aria-controls="fortuneSlip">
           <svg class="cat-art" viewBox="0 0 180 190" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
             <defs>
-              <clipPath id="catFaceClip"><path d="M42 77 L40 30 Q40 19 50 25 L72 40 Q89 34 109 40 L132 24 Q140 19 140 31 L138 77 Q143 109 91 115 Q39 111 42 77Z"/></clipPath>
+              <clipPath id="catFaceClip"><path d="M45 80 Q39 54 45 32 Q48 20 58 27 L75 41 Q90 37 105 41 L122 27 Q132 20 135 32 Q141 54 135 80 Q133 113 90 114 Q47 113 45 80Z"/></clipPath>
             </defs>
-            <g class="cat-hearts" fill="var(--pink)" stroke="var(--text)" stroke-width="2">
+            <g class="cat-hearts" fill="var(--cat-blush)" stroke="var(--cat-line)" stroke-width="2">
               <path class="cat-heart h1" d="M28 47 C12 36 24 24 28 33 C34 22 45 35 28 47Z"/>
               <path class="cat-heart h2" d="M151 37 C137 26 148 17 151 24 C157 16 165 28 151 37Z"/>
               <path class="cat-heart h3" d="M95 22 C80 11 91 2 95 10 C101 1 110 13 95 22Z"/>
             </g>
             <text class="cat-zzz" x="147" y="41" fill="var(--muted)" font-family="Georgia, serif" font-style="italic" font-size="20">z z</text>
-            <ellipse cx="90" cy="178" rx="58" ry="7" fill="var(--ink)" opacity=".13"/>
-            <g class="cat-body" stroke="var(--text)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
-              <g class="cat-tail"><path d="M128 160 C161 169 170 144 157 130 C149 121 144 132 151 137 C159 147 147 154 133 148" fill="var(--accent)"/></g>
-              <path d="M62 103 Q42 124 46 165 Q46 177 61 177 H120 Q136 177 136 163 Q136 123 116 103Z" fill="var(--card)"/>
-              <path d="M48 141 Q66 137 68 155 Q69 167 59 176 H52 Q44 169 48 141Z" fill="var(--accent)" stroke="none"/>
-              <path d="M113 158 Q112 144 128 139 L134 154 L133 167Z" fill="var(--ink)" stroke="none"/>
+            <ellipse cx="90" cy="178" rx="58" ry="7" fill="#000" opacity=".12"/>
+            <g class="cat-body" stroke="var(--cat-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+              <g class="cat-tail"><path d="M128 160 C161 169 170 144 157 130 C149 121 144 132 151 137 C159 147 147 154 133 148" fill="var(--cat-orange)"/></g>
+              <path d="M62 103 Q42 124 46 165 Q46 177 61 177 H120 Q136 177 136 163 Q136 123 116 103Z" fill="var(--cat-fur)"/>
+              <path d="M48 141 Q66 137 68 155 Q69 167 59 176 H52 Q44 169 48 141Z" fill="var(--cat-orange)" stroke="none"/>
+              <path d="M113 158 Q112 144 128 139 L134 154 L133 167Z" fill="var(--cat-dark)" stroke="none"/>
               <path d="M74 176 V167 Q61 156 52 169 M105 176 V168 Q117 157 128 170"/>
               <path d="M59 174 V177 M65 173 V177 M114 173 V177 M121 173 V177" stroke-width="2"/>
               <g class="cat-head">
-                <path d="M42 77 L40 30 Q40 19 50 25 L72 40 Q89 34 109 40 L132 24 Q140 19 140 31 L138 77 Q143 109 91 115 Q39 111 42 77Z" fill="var(--card)"/>
+                <path d="M45 80 Q39 54 45 32 Q48 20 58 27 L75 41 Q90 37 105 41 L122 27 Q132 20 135 32 Q141 54 135 80 Q133 113 90 114 Q47 113 45 80Z" fill="var(--cat-fur)"/>
                 <g clip-path="url(#catFaceClip)" stroke="none">
-                  <path d="M35 15 H79 Q89 57 55 66 L35 65Z" fill="var(--accent)"/>
-                  <path d="M109 15 H148 V68 Q112 65 105 49Z" fill="var(--ink)"/>
-                  <ellipse cx="56" cy="89" rx="10" ry="5" fill="var(--pink)" opacity=".65"/>
-                  <ellipse cx="124" cy="89" rx="10" ry="5" fill="var(--pink)" opacity=".65"/>
+                  <path d="M35 15 H78 Q86 52 58 60 L35 62Z" fill="var(--cat-orange)"/>
+                  <path d="M108 15 H148 V64 Q114 60 106 46Z" fill="var(--cat-dark)"/>
+                  <ellipse cx="58" cy="92" rx="9" ry="5" fill="var(--cat-blush)" opacity=".8"/>
+                  <ellipse cx="122" cy="92" rx="9" ry="5" fill="var(--cat-blush)" opacity=".8"/>
                 </g>
-                <path d="M49 34 L51 49 L62 44 M131 34 L120 44 L130 49" fill="var(--pink)" stroke-width="2"/>
+                <path d="M51 34 L53 48 L63 43 M129 34 L117 43 L127 48" fill="var(--cat-blush)" stroke-width="2"/>
                 <g class="cat-eyes">
-                  <ellipse cx="69" cy="77" rx="9" ry="10" fill="var(--bg)" stroke-width="2"/>
-                  <ellipse cx="111" cy="77" rx="9" ry="10" fill="var(--bg)" stroke-width="2"/>
-                  <g class="cat-pupils" fill="var(--text)" stroke="none"><ellipse cx="69" cy="78" rx="4.6" ry="6.5"/><ellipse cx="111" cy="78" rx="4.6" ry="6.5"/></g>
-                  <g fill="var(--card)" stroke="none"><circle cx="67" cy="75" r="1.6"/><circle cx="109" cy="75" r="1.6"/></g>
+                  <g class="cat-pupils" stroke="none">
+                    <ellipse cx="70" cy="81" rx="6" ry="7.5" fill="var(--cat-line)"/>
+                    <ellipse cx="110" cy="81" rx="6" ry="7.5" fill="var(--cat-line)"/>
+                    <circle cx="68" cy="78" r="2.2" fill="#fff"/><circle cx="108" cy="78" r="2.2" fill="#fff"/>
+                  </g>
                 </g>
-                <g class="cat-closed-eyes"><path d="M61 79 Q69 71 77 79 M103 79 Q111 71 119 79"/></g>
-                <path d="M86 87 Q90 85 94 87 L90 91Z" fill="var(--accent)" stroke-width="2"/>
-                <path d="M90 92 Q85 100 80 94 M90 92 Q95 100 100 94" stroke-width="2"/>
-                <path d="M48 84 L34 81 M48 92 L35 94 M132 84 L146 81 M132 92 L145 94" stroke-width="2"/>
+                <g class="cat-closed-eyes"><path d="M63 82 Q70 75 77 82 M103 82 Q110 75 117 82"/></g>
+                <path d="M87 89 Q90 87.5 93 89 L90 92Z" fill="var(--cat-orange)" stroke-width="2"/>
+                <path d="M90 93 Q86 99 82 95 M90 93 Q94 99 98 95" stroke-width="2"/>
+                <path d="M50 86 L37 83 M50 93 L38 95 M130 86 L143 83 M130 93 L142 95" stroke-width="2"/>
               </g>
-              <path d="M60 110 Q89 123 119 110 L117 119 Q90 132 62 119Z" fill="var(--accent)"/>
-              <circle cx="90" cy="126" r="8" fill="var(--gold)" stroke-width="2"/>
+              <path d="M60 110 Q89 123 119 110 L117 119 Q90 132 62 119Z" fill="var(--cat-red)"/>
+              <circle cx="90" cy="126" r="8" fill="var(--cat-gold)" stroke-width="2"/>
               <path d="M86 125 H94 M90 129 V133" stroke-width="2"/>
-              <ellipse cx="92" cy="153" rx="18" ry="22" fill="var(--gold)"/>
+              <ellipse cx="92" cy="153" rx="18" ry="22" fill="var(--cat-gold)"/>
               <ellipse cx="92" cy="153" rx="12" ry="16" stroke-width="1.5"/>
               <path d="M92 143 V163 M87 147 H96 M87 153 H96 M87 159 H96" stroke-width="2"/>
-              <path d="M111 134 Q121 130 123 141 Q123 151 109 152 Q102 148 108 143" fill="var(--card)"/>
+              <path d="M111 134 Q121 130 123 141 Q123 151 109 152 Q102 148 108 143" fill="var(--cat-fur)"/>
               <g class="cat-paw">
-                <path d="M54 132 Q35 145 26 125 L23 102 Q17 78 31 74 Q48 70 49 88 L49 111 L59 115" fill="var(--card)"/>
+                <path d="M54 132 Q35 145 26 125 L23 102 Q17 78 31 74 Q48 70 49 88 L49 111 L59 115" fill="var(--cat-fur)"/>
                 <path d="M26 87 L27 94 M33 84 L34 92 M40 86 L41 94" stroke-width="2"/>
-                <ellipse cx="35" cy="106" rx="6" ry="7" fill="var(--pink)" stroke="none"/>
+                <ellipse cx="35" cy="106" rx="6" ry="7" fill="var(--cat-blush)" stroke="none"/>
               </g>
             </g>
           </svg>
@@ -870,7 +873,7 @@
         const dx = pointer.x - (box.left + box.width / 2);
         const dy = pointer.y - (box.top + box.height * .41);
         const distance = Math.hypot(dx, dy) || 1;
-        const radius = Math.min(2.8, distance / 80);
+        const radius = Math.min(1.8, distance / 120);
         pupils.setAttribute('transform', `translate(${dx / distance * radius} ${dy / distance * radius})`);
       });
     }, { passive: true });
