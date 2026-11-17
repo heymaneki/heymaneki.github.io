@@ -394,6 +394,70 @@
       .avatar-wrap { width: 62px; height: 62px; }
       .hero-title h1 { font-size: 1.65rem; }
     }
+    /* Lucky cat — all colors inherit the existing theme. */
+    .hero { position: relative; margin-top: 6rem; }
+    .hero-top { padding-right: 8.5rem; }
+    .cat-perch { position: absolute; right: 1.1rem; top: -5.6rem; width: 136px; z-index: 1; }
+    .cat-button { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 0; border: 0; background: none; color: var(--text); cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
+    .cat-art { width: 100%; height: auto; overflow: visible; }
+    .cat-label { margin-top: -3px; padding: 2px 10px; font-family: inherit; font-size: .72rem; font-weight: 700; line-height: 1.6; background: var(--card); border: 1.5px solid var(--ink); border-radius: 999px; box-shadow: var(--shadow-sm); white-space: nowrap; }
+    .cat-button:hover .cat-label { background: var(--card-alt); }
+    .cat-button:focus-visible { outline: 3px solid var(--text); outline-offset: 5px; border-radius: 18px; }
+    .fortune-slip button:focus-visible { outline: 3px solid var(--text); outline-offset: 4px; }
+    .cat-paw { transform-origin: 48px 123px; }
+    .cat-head { transform-origin: 90px 108px; }
+    .cat-tail { transform-origin: 132px 154px; }
+    .cat-body { transform-origin: 90px 177px; }
+    .cat-eyes { transform-box: fill-box; transform-origin: center; }
+    .cat-closed-eyes, .cat-hearts, .cat-zzz { opacity: 0; }
+    .cat-perch.is-blinking .cat-eyes { transform: scaleY(.08); }
+    .cat-perch.is-petting .cat-eyes, .cat-perch.is-napping .cat-eyes { opacity: 0; }
+    .cat-perch.is-petting .cat-closed-eyes, .cat-perch.is-napping .cat-closed-eyes { opacity: 1; }
+    .cat-perch.is-petting .cat-hearts, .cat-perch.is-napping .cat-zzz { opacity: 1; }
+    .cat-perch.is-waving .cat-paw { animation: cat-wave 1.4s ease-in-out; }
+    .cat-perch.is-petting .cat-body { animation: cat-purr .18s ease-in-out 6 alternate; }
+    .cat-perch.is-petting .cat-tail { animation: cat-tail .6s ease-in-out 2 alternate; }
+    .cat-perch.is-petting .cat-heart { animation: cat-heart 1.3s ease-out both; }
+    .cat-perch.is-petting .h2 { animation-delay: .12s; }
+    .cat-perch.is-petting .h3 { animation-delay: .24s; }
+    .cat-perch.is-napping .cat-head { transform: translateY(5px) rotate(6deg); }
+    .cat-perch.is-napping .cat-body { transform: translateY(8px) scaleY(.94); }
+    .cat-perch.is-napping .cat-paw { transform: rotate(-24deg); }
+    .cat-perch.is-napping .cat-zzz { animation: cat-snooze 3s ease-in-out infinite; }
+    .cat-perch.is-waking .cat-body { animation: cat-stretch .6s ease-in-out; }
+    @keyframes cat-wave { 0%,100% { transform: rotate(0); } 25%,65% { transform: rotate(18deg); } 45%,85% { transform: rotate(-8deg); } }
+    @keyframes cat-purr { from { transform: rotate(-1deg); } to { transform: rotate(1deg); } }
+    @keyframes cat-tail { to { transform: rotate(-12deg); } }
+    @keyframes cat-heart { 0% { opacity: 0; transform: translateY(8px); } 25% { opacity: 1; } 100% { opacity: 0; transform: translateY(-22px); } }
+    @keyframes cat-snooze { 0%,100% { opacity: .35; transform: translateY(0); } 50% { opacity: 1; transform: translateY(-5px); } }
+    @keyframes cat-stretch { 50% { transform: scaleY(1.05); } }
+    .fortune-slip { position: relative; margin-top: 1.5rem; padding: 1rem 1.15rem 1.15rem; background: var(--card-alt); color: var(--text); border: 2px solid var(--ink); border-top: 4px solid var(--gold); border-radius: 4px 4px 12px 12px; box-shadow: var(--shadow-sm); animation: slip-in .24s ease-out; }
+    .fortune-topline { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+    .fortune-eyebrow { font-size: .69rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+    .fortune-close { display: grid; place-items: center; width: 44px; height: 44px; flex: 0 0 44px; margin: -.5rem -.5rem -.25rem 0; border: 0; border-radius: 8px; background: none; color: var(--text); cursor: pointer; }
+    .fortune-close:hover { background: var(--card); }
+    .fortune-slip h2 { margin: .3rem 0 .35rem; font: 700 1.7rem/1.2 Georgia, serif; letter-spacing: -.025em; }
+    .fortune-line { font-size: 1.03rem; line-height: 1.55; max-width: 45ch; }
+    .fortune-note { margin-top: .55rem; font-size: .82rem; color: var(--muted); }
+    .fortune-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem .9rem; padding-top: 1rem; margin-top: 1rem; border-top: 1px dashed var(--ink); }
+    .fortune-actions .btn { min-height: 44px; font-size: .78rem; }
+    .cat-pet-button { min-height: 44px; padding: .3rem; background: none; border: 0; font: inherit; font-size: .8rem; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; color: var(--text); cursor: pointer; }
+    .fortune-signature { margin-left: auto; font: italic .85rem Georgia, serif; color: var(--muted); }
+    .cat-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+    [hidden] { display: none !important; }
+    @keyframes slip-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 480px) {
+      .hero { margin-top: 8.4rem; }
+      .hero-top { padding-right: 0; }
+      .cat-perch { width: 104px; right: 1rem; top: -8.25rem; }
+      .fortune-slip { padding: .8rem .9rem 1rem; }
+      .fortune-signature { flex-basis: 100%; margin-top: .3rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .cat-perch *, .fortune-slip { animation: none !important; transition: none !important; transform: none !important; }
+      .cat-hearts, .cat-zzz { display: none; }
+    }
+
   </style>
 </head>
 <body>
@@ -405,6 +469,65 @@
 
     <!-- HERO -->
     <header class="hero">
+      <!-- Lucky cat: artwork and interaction are self-contained. -->
+      <div class="cat-perch" id="luckyCat" hidden>
+        <button class="cat-button" id="catButton" type="button" aria-label="Lucky cat: get a fortune" aria-expanded="false" aria-controls="fortuneSlip">
+          <svg class="cat-art" viewBox="0 0 180 190" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <defs>
+              <clipPath id="catFaceClip"><path d="M42 77 L40 30 Q40 19 50 25 L72 40 Q89 34 109 40 L132 24 Q140 19 140 31 L138 77 Q143 109 91 115 Q39 111 42 77Z"/></clipPath>
+            </defs>
+            <g class="cat-hearts" fill="var(--pink)" stroke="var(--text)" stroke-width="2">
+              <path class="cat-heart h1" d="M28 47 C12 36 24 24 28 33 C34 22 45 35 28 47Z"/>
+              <path class="cat-heart h2" d="M151 37 C137 26 148 17 151 24 C157 16 165 28 151 37Z"/>
+              <path class="cat-heart h3" d="M95 22 C80 11 91 2 95 10 C101 1 110 13 95 22Z"/>
+            </g>
+            <text class="cat-zzz" x="147" y="41" fill="var(--muted)" font-family="Georgia, serif" font-style="italic" font-size="20">z z</text>
+            <ellipse cx="90" cy="178" rx="58" ry="7" fill="var(--ink)" opacity=".13"/>
+            <g class="cat-body" stroke="var(--text)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+              <g class="cat-tail"><path d="M128 160 C161 169 170 144 157 130 C149 121 144 132 151 137 C159 147 147 154 133 148" fill="var(--accent)"/></g>
+              <path d="M62 103 Q42 124 46 165 Q46 177 61 177 H120 Q136 177 136 163 Q136 123 116 103Z" fill="var(--card)"/>
+              <path d="M48 141 Q66 137 68 155 Q69 167 59 176 H52 Q44 169 48 141Z" fill="var(--accent)" stroke="none"/>
+              <path d="M113 158 Q112 144 128 139 L134 154 L133 167Z" fill="var(--ink)" stroke="none"/>
+              <path d="M74 176 V167 Q61 156 52 169 M105 176 V168 Q117 157 128 170"/>
+              <path d="M59 174 V177 M65 173 V177 M114 173 V177 M121 173 V177" stroke-width="2"/>
+              <g class="cat-head">
+                <path d="M42 77 L40 30 Q40 19 50 25 L72 40 Q89 34 109 40 L132 24 Q140 19 140 31 L138 77 Q143 109 91 115 Q39 111 42 77Z" fill="var(--card)"/>
+                <g clip-path="url(#catFaceClip)" stroke="none">
+                  <path d="M35 15 H79 Q89 57 55 66 L35 65Z" fill="var(--accent)"/>
+                  <path d="M109 15 H148 V68 Q112 65 105 49Z" fill="var(--ink)"/>
+                  <ellipse cx="56" cy="89" rx="10" ry="5" fill="var(--pink)" opacity=".65"/>
+                  <ellipse cx="124" cy="89" rx="10" ry="5" fill="var(--pink)" opacity=".65"/>
+                </g>
+                <path d="M49 34 L51 49 L62 44 M131 34 L120 44 L130 49" fill="var(--pink)" stroke-width="2"/>
+                <g class="cat-eyes">
+                  <ellipse cx="69" cy="77" rx="9" ry="10" fill="var(--bg)" stroke-width="2"/>
+                  <ellipse cx="111" cy="77" rx="9" ry="10" fill="var(--bg)" stroke-width="2"/>
+                  <g class="cat-pupils" fill="var(--text)" stroke="none"><ellipse cx="69" cy="78" rx="4.6" ry="6.5"/><ellipse cx="111" cy="78" rx="4.6" ry="6.5"/></g>
+                  <g fill="var(--card)" stroke="none"><circle cx="67" cy="75" r="1.6"/><circle cx="109" cy="75" r="1.6"/></g>
+                </g>
+                <g class="cat-closed-eyes"><path d="M61 79 Q69 71 77 79 M103 79 Q111 71 119 79"/></g>
+                <path d="M86 87 Q90 85 94 87 L90 91Z" fill="var(--accent)" stroke-width="2"/>
+                <path d="M90 92 Q85 100 80 94 M90 92 Q95 100 100 94" stroke-width="2"/>
+                <path d="M48 84 L34 81 M48 92 L35 94 M132 84 L146 81 M132 92 L145 94" stroke-width="2"/>
+              </g>
+              <path d="M60 110 Q89 123 119 110 L117 119 Q90 132 62 119Z" fill="var(--accent)"/>
+              <circle cx="90" cy="126" r="8" fill="var(--gold)" stroke-width="2"/>
+              <path d="M86 125 H94 M90 129 V133" stroke-width="2"/>
+              <ellipse cx="92" cy="153" rx="18" ry="22" fill="var(--gold)"/>
+              <ellipse cx="92" cy="153" rx="12" ry="16" stroke-width="1.5"/>
+              <path d="M92 143 V163 M87 147 H96 M87 153 H96 M87 159 H96" stroke-width="2"/>
+              <path d="M111 134 Q121 130 123 141 Q123 151 109 152 Q102 148 108 143" fill="var(--card)"/>
+              <g class="cat-paw">
+                <path d="M54 132 Q35 145 26 125 L23 102 Q17 78 31 74 Q48 70 49 88 L49 111 L59 115" fill="var(--card)"/>
+                <path d="M26 87 L27 94 M33 84 L34 92 M40 86 L41 94" stroke-width="2"/>
+                <ellipse cx="35" cy="106" rx="6" ry="7" fill="var(--pink)" stroke="none"/>
+              </g>
+            </g>
+          </svg>
+          <span class="cat-label">Ask the cat</span>
+        </button>
+      </div>
+
       <div class="hero-top">
         <div class="avatar-wrap">
           <img
@@ -430,6 +553,22 @@
         <a class="btn" href="https://github.com/heymaneki" target="_blank" rel="noopener">GitHub</a>
         <button class="btn" id="copyEmailBtn" type="button">Copy email</button>
       </div>
+      <div class="fortune-slip" id="fortuneSlip" role="region" aria-labelledby="fortuneHeading" hidden>
+        <div class="fortune-topline">
+          <span class="fortune-eyebrow">A little luck, on the house</span>
+          <button class="fortune-close" id="fortuneClose" type="button" aria-label="Close fortune"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 5 L15 15 M15 5 L5 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        </div>
+        <h2 id="fortuneHeading"></h2>
+        <p class="fortune-line" id="fortuneLine"></p>
+        <p class="fortune-note" id="fortuneNote"></p>
+        <div class="fortune-actions">
+          <button class="btn" id="fortuneAgain" type="button">Another fortune</button>
+          <button class="cat-pet-button" id="catPet" type="button">Pet the cat</button>
+          <span class="fortune-signature" aria-hidden="true">— the shop cat</span>
+        </div>
+      </div>
+      <p class="cat-sr-only" id="catAnnouncement" aria-live="polite" aria-atomic="true"></p>
+
     </header>
 
     <!-- WHAT I CAN HELP WITH -->
@@ -545,6 +684,268 @@
         window.location.href = 'mailto:' + EMAIL;
       }
     });
+  </script>
+  <script>
+  // Lucky cat: no dependencies, requests, audio or visitor tracking.
+  (() => {
+    'use strict';
+    const cat = document.getElementById('luckyCat');
+    const button = document.getElementById('catButton');
+    const slip = document.getElementById('fortuneSlip');
+    const heading = document.getElementById('fortuneHeading');
+    const line = document.getElementById('fortuneLine');
+    const note = document.getElementById('fortuneNote');
+    const announcement = document.getElementById('catAnnouncement');
+    const pupils = cat.querySelector('.cat-pupils');
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    // A single weighted draw selects the level, then a fresh line within it.
+    const fortunes = [
+      { name: 'Great luck', weight: 7, lines: [
+        'The file you forgot to save is still open.',
+        'Someone will pay your invoice without a reminder.',
+        'Your first idea will also be the good one.',
+        'The thing you made for fun will become someone’s favorite.',
+        'You will find the perfect name. The domain might even be free.',
+        'An old project is about to make a new friend.',
+        'Today, the backup has a backup.'
+      ]},
+      { name: 'Good luck', weight: 35, lines: [
+        'A stranger will compliment your font choices.',
+        'The next small thing you finish will feel surprisingly big.',
+        'Your tea will be the right temperature when you remember it.',
+        'Someone is going to use that thing you nearly didn’t share.',
+        'A stubborn bug will reveal itself after a snack.',
+        'The instructions will actually match the buttons.',
+        'You will close a tab and feel something resembling peace.',
+        'The right person will find your weird little project.',
+        'A useful idea is hiding in your notes. Below the shopping list.'
+      ]},
+      { name: 'Small luck', weight: 35, lines: [
+        'You will find the exact cable you need.',
+        'Your next download will have a sensible file name.',
+        'One of those open tabs is still useful. Probably.',
+        'The last biscuit has your name on it. I checked.',
+        'Your next export will finish before the kettle.',
+        'A tiny adjustment will make the whole thing look better.',
+        'You will remember why you walked into that room.',
+        'There is still enough battery for one good idea.',
+        'A missing pixel will return from its travels.'
+      ]},
+      { name: 'Uncertain luck', weight: 18, lines: [
+        'I sat on the prediction.',
+        'The stars say “maybe.” Very professional of them.',
+        'Your future is loading. I suggest a stretch.',
+        'There is a sign. Unfortunately, it is in a font I can’t read.',
+        'A mysterious opportunity approaches. Could also be lunch.',
+        'The answer is in another tab.',
+        'I consulted the moon. It left me on read.'
+      ]},
+      { name: 'Bad luck', weight: 5, lines: [
+        'Your next meeting could have been an email.',
+        'The file is called final_final_3. It is not final.',
+        'Someone will ask you to make the logo bigger.',
+        'The cable will be one centimeter too short.',
+        'Your best idea will arrive just after you get comfortable.',
+        'The printer has chosen drama today.',
+        'You will spot the typo immediately after pressing send.'
+      ]}
+    ];
+    let recent = [];
+    try {
+      const stored = JSON.parse(sessionStorage.getItem('maneki-cat-recent') || '[]');
+      if (Array.isArray(stored)) recent = stored.filter(x => typeof x === 'string').slice(-12);
+    } catch (_) { /* Private browsing and blocked storage are fine. */ }
+    const timers = new Map();
+    let raf = 0;
+    let pointer = null;
+    let hold = null;
+    let suppressClickUntil = 0;
+    let lastInput = Date.now();
+    let petX = null;
+    let petDirection = 0;
+    let reversals = 0;
+    let lastReversal = 0;
+    let blinkAt = Date.now() + 3000 + Math.random() * 3000;
+    let waveAt = Date.now() + 8000 + Math.random() * 6000;
+
+    function clearTimer(key) {
+      clearTimeout(timers.get(key));
+      timers.delete(key);
+    }
+    function later(key, fn, delay) {
+      clearTimer(key);
+      timers.set(key, setTimeout(() => { timers.delete(key); fn(); }, delay));
+    }
+    function pose(name, duration) {
+      if (motion.matches) return;
+      cat.classList.add(name);
+      later(name, () => cat.classList.remove(name), duration);
+    }
+    function announce(text) {
+      announcement.textContent = '';
+      later('announce', () => { announcement.textContent = text; }, 60);
+    }
+    function activity() {
+      lastInput = Date.now();
+      if (cat.classList.contains('is-napping')) {
+        cat.classList.remove('is-napping');
+        pose('is-waking', 650);
+      }
+    }
+    function getFortune() {
+      activity();
+      let ticket = Math.random() * 100;
+      const level = fortunes.find(f => (ticket -= f.weight) < 0) || fortunes[fortunes.length - 1];
+      let pool = level.lines.filter(text => !recent.includes(text));
+      // Keep the most recent line excluded even if a level's pool was exhausted.
+      if (!pool.length) pool = level.lines.filter(text => text !== recent[recent.length - 1]);
+      const text = pool[Math.floor(Math.random() * pool.length)];
+      recent = [...recent, text].slice(-12);
+      try { sessionStorage.setItem('maneki-cat-recent', JSON.stringify(recent)); } catch (_) {}
+      heading.textContent = level.name;
+      line.textContent = text;
+      note.textContent = level.name === 'Bad luck'
+        ? 'Pet the cat. Request a second opinion.'
+        : 'Prepared by a cat. Take with a pinch of catnip.';
+      slip.hidden = false;
+      button.setAttribute('aria-expanded', 'true');
+      pose('is-waving', 1400);
+      announce(level.name + '. ' + text + ' ' + note.textContent);
+    }
+    function closeFortune(restoreFocus) {
+      if (slip.hidden) return;
+      slip.hidden = true;
+      button.setAttribute('aria-expanded', 'false');
+      clearTimer('announce');
+      announcement.textContent = '';
+      if (restoreFocus) button.focus({ preventScroll: true });
+    }
+    function pet() {
+      activity();
+      if (cat.classList.contains('is-petting')) return;
+      cat.classList.remove('is-blinking', 'is-waving', 'is-waking');
+      // Still show a static happy expression with reduced motion.
+      cat.classList.add('is-petting');
+      later('is-petting', () => cat.classList.remove('is-petting'), 1600);
+      announce('Purr. The cat approves.');
+    }
+    button.addEventListener('click', event => {
+      if (event.detail !== 0 && Date.now() < suppressClickUntil) return;
+      getFortune();
+    });
+    document.getElementById('fortuneAgain').addEventListener('click', getFortune);
+    document.getElementById('catPet').addEventListener('click', pet);
+    document.getElementById('fortuneClose').addEventListener('click', () => closeFortune(true));
+    document.addEventListener('keydown', event => {
+      activity();
+      if (event.key === 'Escape' && !slip.hidden) {
+        closeFortune(slip.contains(document.activeElement) || document.activeElement === button);
+      }
+    });
+    document.addEventListener('pointerdown', event => {
+      activity();
+      if (!cat.contains(event.target) && !slip.contains(event.target)) {
+        closeFortune(slip.contains(document.activeElement));
+      }
+    }, { passive: true });
+
+    function resetPupils() { pupils.removeAttribute('transform'); }
+    function stopHold() {
+      clearTimer('hold');
+      hold = null;
+    }
+    button.addEventListener('pointerdown', event => {
+      if (event.pointerType === 'mouse' || !event.isPrimary) return;
+      hold = { id: event.pointerId, x: event.clientX, y: event.clientY };
+      later('hold', () => { hold.petted = true; pet(); suppressClickUntil = Date.now() + 1000; }, 550);
+    }, { passive: true });
+    document.addEventListener('pointermove', event => {
+      activity();
+      if (hold && event.pointerId === hold.id && Math.hypot(event.clientX - hold.x, event.clientY - hold.y) > 10) stopHold();
+      if (motion.matches || document.hidden || event.pointerType !== 'mouse') return;
+      pointer = { x: event.clientX, y: event.clientY };
+      if (!raf) raf = requestAnimationFrame(() => {
+        raf = 0;
+        const box = cat.querySelector('svg').getBoundingClientRect();
+        const dx = pointer.x - (box.left + box.width / 2);
+        const dy = pointer.y - (box.top + box.height * .41);
+        const distance = Math.hypot(dx, dy) || 1;
+        const radius = Math.min(2.8, distance / 80);
+        pupils.setAttribute('transform', `translate(${dx / distance * radius} ${dy / distance * radius})`);
+      });
+    }, { passive: true });
+    function release(event) {
+      if (hold && event.pointerId === hold.id) {
+        if (hold.petted) suppressClickUntil = Date.now() + 700;
+        stopHold();
+      }
+    }
+    document.addEventListener('pointerup', release, { passive: true });
+    document.addEventListener('pointercancel', release, { passive: true });
+    button.addEventListener('pointermove', event => {
+      if (event.pointerType !== 'mouse' || motion.matches) return;
+      const now = Date.now();
+      if (petX === null) { petX = event.clientX; return; }
+      const dx = event.clientX - petX;
+      if (Math.abs(dx) < 3) return;
+      const direction = Math.sign(dx);
+      if (now - lastReversal > 900) reversals = 0;
+      if (petDirection && direction !== petDirection) {
+        reversals++;
+        lastReversal = now;
+        if (reversals >= 3) { pet(); reversals = 0; }
+      }
+      petX = event.clientX;
+      petDirection = direction;
+    }, { passive: true });
+    button.addEventListener('pointerleave', () => { petX = null; petDirection = 0; reversals = 0; stopHold(); });
+    document.addEventListener('scroll', () => { activity(); stopHold(); }, { passive: true });
+    window.addEventListener('blur', () => { stopHold(); resetPupils(); });
+
+    function resetMotion() {
+      cancelAnimationFrame(raf);
+      raf = 0;
+      resetPupils();
+      for (const name of ['is-blinking', 'is-waving', 'is-petting', 'is-napping', 'is-waking']) {
+        cat.classList.remove(name);
+        clearTimer(name);
+      }
+      lastInput = Date.now();
+      blinkAt = lastInput + 3000 + Math.random() * 3000;
+      waveAt = lastInput + 8000 + Math.random() * 6000;
+    }
+    if (motion.addEventListener) motion.addEventListener('change', resetMotion);
+    else motion.addListener(resetMotion);
+    document.addEventListener('visibilitychange', () => {
+      stopHold();
+      resetMotion();
+      if (document.hidden) clearTimer('idle');
+      else tick();
+    });
+    function tick() {
+      if (document.hidden) return;
+      const now = Date.now();
+      if (!motion.matches) {
+        if (now - lastInput >= 30000) {
+          cat.classList.add('is-napping');
+          cat.classList.remove('is-waving', 'is-blinking');
+          resetPupils();
+        } else if (!cat.classList.contains('is-petting')) {
+          if (now >= blinkAt) {
+            pose('is-blinking', 150);
+            blinkAt = now + 3000 + Math.random() * 3000;
+          }
+          if (now >= waveAt) {
+            pose('is-waving', 1400);
+            waveAt = now + 9000 + Math.random() * 9000;
+          }
+        }
+      }
+      later('idle', tick, 250);
+    }
+    cat.hidden = false;
+    tick();
+  })();
   </script>
 </body>
 </html>
