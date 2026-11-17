@@ -89,6 +89,7 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
+      gap: .5rem;
       margin-bottom: 1.15rem;
     }
 
@@ -395,9 +396,9 @@
       .hero-title h1 { font-size: 1.65rem; }
     }
     /* Lucky cat — fixed colors so it is the same white calico in both themes. */
-    .cat-perch { --cat-fur: #fffaf2; --cat-line: #2b2622; --cat-orange: #e0773f; --cat-dark: #3a332d; --cat-red: #c4501f; --cat-gold: #f5c451; --cat-blush: #f4a9bb; }
+    .cat-state { --cat-fur: #fffaf2; --cat-line: #2b2622; --cat-orange: #e0773f; --cat-dark: #3a332d; --cat-red: #c4501f; --cat-gold: #f5c451; --cat-blush: #f4a9bb; }
     .hero { position: relative; margin-top: 6.25rem; }
-        .cat-perch { position: absolute; right: 1.6rem; top: calc(-150px * 100 / 180 - 2px); width: 150px; z-index: 1; }
+    .cat-perch { position: absolute; right: 1.6rem; top: calc(-150px * 100 / 180 - 2px); width: 150px; z-index: 1; }
     .cat-button { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 0; border: 0; background: none; color: var(--text); cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
     .cat-art { width: 100%; height: auto; overflow: visible; }
     [data-theme="dark"] .cat-art { filter: drop-shadow(0 0 1.2px rgba(255, 250, 242, .7)); }
@@ -406,24 +407,36 @@
     .cat-button:focus-visible { outline: 3px solid var(--text); outline-offset: 5px; border-radius: 18px; }
     .fortune-slip button:focus-visible { outline: 3px solid var(--text); outline-offset: 4px; }
     .cat-paw { transform-origin: 52px 108px; }
+    .cat-paw-r { transform-origin: 128px 108px; }
+    .cat-impact { opacity: 0; }
     .cat-head { transform-origin: 90px 100px; }
     .cat-tail { transform-origin: 136px 162px; }
     .cat-body { transform-origin: 90px 104px; }
     .cat-eyes { transform-box: fill-box; transform-origin: center; }
     .cat-closed-eyes, .cat-hearts, .cat-zzz { opacity: 0; }
-    .cat-perch.is-blinking .cat-eyes { transform: scaleY(.08); }
-    .cat-perch.is-petting .cat-eyes, .cat-perch.is-napping .cat-eyes { opacity: 0; }
-    .cat-perch.is-petting .cat-closed-eyes, .cat-perch.is-napping .cat-closed-eyes { opacity: 1; }
-    .cat-perch.is-petting .cat-hearts, .cat-perch.is-napping .cat-zzz { opacity: 1; }
-    .cat-perch.is-waving .cat-paw { animation: cat-wave 1.4s ease-in-out; }
-    .cat-perch.is-petting .cat-body { animation: cat-purr .18s ease-in-out 6 alternate; }
-    .cat-perch.is-petting .cat-tail { animation: cat-tail .6s ease-in-out 2 alternate; }
-    .cat-perch.is-petting .cat-heart { animation: cat-heart 1.3s ease-out both; }
-    .cat-perch.is-petting .h2 { animation-delay: .12s; }
-    .cat-perch.is-petting .h3 { animation-delay: .24s; }
-    .cat-perch.is-napping .cat-head { transform: translateY(4px); }
-            .cat-perch.is-napping .cat-zzz { animation: cat-snooze 3s ease-in-out infinite; }
-    .cat-perch.is-waking .cat-body { animation: cat-stretch .6s ease-in-out; }
+    .cat-state.is-blinking .cat-eyes { transform: scaleY(.08); }
+    .cat-state.is-petting .cat-eyes, .cat-state.is-napping .cat-eyes { opacity: 0; }
+    .cat-state.is-petting .cat-closed-eyes, .cat-state.is-napping .cat-closed-eyes { opacity: 1; }
+    .cat-state.is-petting .cat-hearts, .cat-state.is-napping .cat-zzz { opacity: 1; }
+    .cat-state.is-waving .cat-paw { animation: cat-wave 1.4s ease-in-out; }
+    .cat-state.is-petting .cat-body { animation: cat-purr .18s ease-in-out 6 alternate; }
+    .cat-state.is-petting .cat-tail { animation: cat-tail .6s ease-in-out 2 alternate; }
+    .cat-state.is-petting .cat-heart { animation: cat-heart 1.3s ease-out both; }
+    .cat-state.is-petting .h2 { animation-delay: .12s; }
+    .cat-state.is-petting .h3 { animation-delay: .24s; }
+    .cat-state.is-napping .cat-head { transform: translateY(4px); }
+    .cat-state.is-napping .cat-zzz { animation: cat-snooze 3s ease-in-out infinite; }
+    .cat-state.is-waking .cat-body { animation: cat-stretch .6s ease-in-out; }
+    .cat-state.tap-l .cat-paw, .cat-state.tap-r .cat-paw-r { animation: cat-tap .16s ease-out; }
+    .cat-state.tap-l .cat-impact-l, .cat-state.tap-r .cat-impact-r { animation: cat-impact .22s ease-out; }
+    .cat-state.is-excited .cat-eyes { opacity: 0; }
+    .cat-state.is-excited .cat-closed-eyes { opacity: 1; }
+    .hero.is-tapped { animation: card-bump .14s ease-out; }
+    .cat-combo { position: absolute; left: -.4rem; top: -.2rem; padding: 1px 8px; font-family: inherit; font-size: .78rem; font-weight: 800; color: #1e1b18; background: var(--gold); border: 1.5px solid var(--ink); border-radius: 999px; box-shadow: var(--shadow-sm); opacity: 0; transform: scale(.6) rotate(-8deg); transition: opacity .15s ease, transform .15s ease; pointer-events: none; }
+    .cat-combo.is-on { opacity: 1; transform: scale(1) rotate(-8deg); }
+    @keyframes cat-tap { 0% { transform: translateY(-13px) rotate(-5deg); } 70% { transform: translateY(1px); } 100% { transform: none; } }
+    @keyframes cat-impact { from { opacity: 1; } to { opacity: 0; } }
+    @keyframes card-bump { 50% { transform: translateY(1.5px); } }
     @keyframes cat-wave { 0%,100% { transform: none; } 20%,60% { transform: translateY(-22px) rotate(-10deg); } 40%,80% { transform: translateY(-16px) rotate(6deg); } }
     @keyframes cat-purr { from { transform: rotate(-1deg); } to { transform: rotate(1deg); } }
     @keyframes cat-tail { to { transform: rotate(-12deg); } }
@@ -444,6 +457,34 @@
     .fortune-signature { margin-left: auto; font: italic .85rem Georgia, serif; color: var(--muted); }
     .cat-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
     [hidden] { display: none !important; }
+    .showcase-card { background: var(--card); border: 2px solid var(--ink); box-shadow: var(--shadow); border-radius: 14px; padding: 1.25rem; }
+    .showcase-card > p { color: var(--muted); font-size: .95rem; }
+    .showcase-card h3 { font-size: 1rem; margin: 1.3rem 0 .5rem; }
+    .spec { display: grid; grid-template-columns: minmax(0, 250px) 1fr; gap: 1.25rem; align-items: center; margin-top: 1.1rem; }
+    .spec-art { padding: 1.4rem .9rem .5rem; border: 1.5px dashed var(--ink); border-radius: 12px; background-color: var(--card-alt); background-image: linear-gradient(var(--dot) 1px, transparent 1px), linear-gradient(90deg, var(--dot) 1px, transparent 1px); background-size: 14px 14px; }
+    .spec-art svg { display: block; width: 100%; height: auto; overflow: visible; }
+    .spec-art svg * { fill: none !important; stroke: var(--muted) !important; stroke-dasharray: 3 3; }
+    .spec-art [clip-path] { display: none; }
+    .spec-art .cat-head * { stroke: var(--teal) !important; }
+    .spec-art .cat-paw * { stroke: var(--accent) !important; }
+    .spec-art .cat-paw-r * { stroke: #c99a1e !important; }
+    .spec-art .cat-eyes *, .spec-art .cat-closed-eyes * { stroke: var(--pink) !important; }
+    .spec-art .cat-pupils * { fill: var(--pink) !important; }
+    .spec-art .cat-hearts * { stroke: var(--pink) !important; }
+    .spec-art text { fill: var(--muted) !important; stroke: none !important; }
+    .spec-legend { list-style: none; display: grid; gap: .55rem; font-size: .9rem; color: var(--muted); }
+    .spec-legend b { color: var(--text); }
+    .spec-legend i { display: inline-block; width: .85rem; height: .85rem; margin-right: .45rem; vertical-align: -1px; border: 2px dashed var(--c); border-radius: 3px; }
+    .spec-caption { margin-top: .6rem; font-size: .82rem !important; }
+    .try-list { margin: 0 0 0 1.1rem; color: var(--muted); font-size: .93rem; display: grid; gap: .25rem; }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .6rem; margin-top: 1.2rem; }
+    .stats div { padding: .6rem .8rem; background: var(--card-alt); border: 1.5px solid var(--ink); border-radius: 10px; }
+    .stats dt { font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+    .stats dd { font-size: 1.35rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .showcase-foot { margin-top: 1rem; font-size: .85rem !important; }
+    .showcase-foot a { color: var(--text); font-weight: 700; }
+    .theme-btn[aria-pressed="true"] { background: var(--gold); color: #1e1b18; }
+    @media (max-width: 560px) { .spec { grid-template-columns: 1fr; } .spec-art { max-width: 280px; } }
     @keyframes slip-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
     @media (max-width: 480px) {
       .hero { margin-top: 5.25rem; }
@@ -452,7 +493,7 @@
       .fortune-signature { flex-basis: 100%; margin-top: .3rem; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .cat-perch *, .fortune-slip { animation: none !important; transition: none !important; transform: none !important; }
+      .cat-state *, .fortune-slip, .hero.is-tapped { animation: none !important; transition: none !important; transform: none !important; }
       .cat-hearts, .cat-zzz { display: none; }
     }
 
@@ -462,13 +503,15 @@
   <div class="container">
     <!-- TOP BAR -->
     <div class="topbar">
+      <button class="theme-btn" id="soundToggle" type="button" aria-pressed="false">Sound off</button>
       <button class="theme-btn" id="themeToggle" type="button">Dark mode</button>
     </div>
 
     <!-- HERO -->
     <header class="hero">
       <!-- Lucky cat: artwork and interaction are self-contained. -->
-      <div class="cat-perch" id="luckyCat" hidden>
+      <div class="cat-perch cat-state" id="luckyCat" hidden>
+        <span class="cat-combo" id="catCombo" aria-hidden="true"></span>
         <button class="cat-button" id="catButton" type="button" aria-label="Lucky cat: get a fortune" aria-expanded="false" aria-controls="fortuneSlip">
           <svg class="cat-art" viewBox="0 0 180 112" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
             <defs><clipPath id="catHeadClip"><path d="M22 100 Q18 62 40 47 L42 27 Q43 20 50 24 L68 36 Q90 31 112 36 L130 24 Q137 20 138 27 L140 47 Q162 62 158 100Z"/></clipPath></defs>
@@ -493,12 +536,16 @@
                 <circle cx="90" cy="94" r="5.5" fill="var(--cat-gold)" stroke-width="2"/>
                 <path d="M86.5 94 H93.5" stroke-width="1.6"/>
               </g>
-              <ellipse cx="128" cy="101" rx="17" ry="9" fill="var(--cat-fur)"/>
+              <g class="cat-paw-r">
+                <ellipse cx="128" cy="101" rx="17" ry="9" fill="var(--cat-fur)"/>
+                <path d="M123 98 V102 M128 97 V102 M133 98 V102" stroke-width="1.8"/>
+              </g>
               <g class="cat-paw">
                 <ellipse cx="52" cy="101" rx="17" ry="9" fill="var(--cat-fur)"/>
                 <path d="M47 98 V102 M52 97 V102 M57 98 V102" stroke-width="1.8"/>
               </g>
-              <path d="M123 98 V102 M128 97 V102 M133 98 V102" stroke-width="1.8"/>
+              <path class="cat-impact cat-impact-l" d="M30 99 L24 96 M31 106 L24 108 M74 99 L80 96 M73 106 L80 108" stroke-width="2"/>
+              <path class="cat-impact cat-impact-r" d="M106 99 L100 96 M107 106 L100 108 M150 99 L156 96 M149 106 L156 108" stroke-width="2"/>
             </g>
             <g class="cat-hearts" fill="var(--cat-blush)" stroke="var(--cat-line)" stroke-width="1.8">
               <path class="cat-heart h1" d="M24 40 C11 31 20 21 24 28 C29 19 38 30 24 40Z"/>
@@ -582,6 +629,43 @@
       <p class="contact-note">
         Working on something weird or have a small job you don't feel like doing yourself? Email me at <a href="mailto:heymaneki@gmail.com">heymaneki@gmail.com</a> and let me know what you need.
       </p>
+    </section>
+
+    <!-- ABOUT THE CAT -->
+    <section class="showcase" aria-labelledby="showcaseHeading">
+      <div class="section-head">
+        <h2 id="showcaseHeading">How the cat works</h2>
+      </div>
+      <div class="showcase-card">
+        <p>The cat up top is a live sample of the kind of small, polished thing I make. I directed it; AI coding agents (Claude Code and Codex) drew it, animated it and tested it. It is hand-written SVG, CSS and plain JavaScript inside this one page: no images, no libraries, no tracking.</p>
+        <div class="spec">
+          <div class="spec-art" id="catSpec" aria-hidden="true"></div>
+          <ul class="spec-legend">
+            <li><i style="--c: var(--teal)"></i><b>Head</b>: sinks when it naps, wiggles when it purrs</li>
+            <li><i style="--c: var(--accent)"></i><b>Left paw</b>: beckons and drums</li>
+            <li><i style="--c: #c99a1e"></i><b>Right paw</b>: drums</li>
+            <li><i style="--c: var(--pink)"></i><b>Eyes</b>: blink, follow your cursor, close when happy</li>
+          </ul>
+        </div>
+        <p class="spec-caption">This wiring diagram is hooked up to the real cat. It moves when the cat moves.</p>
+        <h3>Things to try</h3>
+        <ul class="try-list">
+          <li>Type anything, or click an empty spot on the page. The cat drums along. Keep it up for a combo.</li>
+          <li>Shake your mouse over the cat, or press and hold it on a phone, to pet it.</li>
+          <li>Click the cat for a fortune.</li>
+          <li>Leave it alone for 30 seconds.</li>
+          <li>Turn on sound at the top. Every sound is generated live in code.</li>
+        </ul>
+        <dl class="stats">
+          <div><dt>Your taps</dt><dd id="statTaps">0</dd></div>
+          <div><dt>Best combo</dt><dd id="statCombo">0</dd></div>
+          <div><dt>Fortunes in the pool</dt><dd id="statPool">-</dd></div>
+          <div><dt>Cat's art + code</dt><dd id="statSize">-</dd></div>
+          <div><dt>Libraries used</dt><dd>0</dd></div>
+          <div><dt>Automated checks</dt><dd id="statChecks">73</dd></div>
+        </dl>
+        <p class="showcase-foot">Every change runs through a headless-browser test suite: light and dark themes, phone to desktop widths, keyboard, screen reader labels and reduced motion. <a href="https://github.com/heymaneki/heymaneki.github.io/tree/main/tests" target="_blank" rel="noopener">Read the tests</a>.</p>
+      </div>
     </section>
 
     <!-- THINGS I'VE MADE -->
@@ -668,8 +752,8 @@
       }
     });
   </script>
-  <script>
-  // Lucky cat: no dependencies, requests, audio or visitor tracking.
+  <script id="catScript">
+  // Lucky cat: no dependencies, requests or visitor tracking. Sound is opt-in and synthesized.
   (() => {
     'use strict';
     const cat = document.getElementById('luckyCat');
@@ -679,7 +763,23 @@
     const line = document.getElementById('fortuneLine');
     const note = document.getElementById('fortuneNote');
     const announcement = document.getElementById('catAnnouncement');
-    const pupils = cat.querySelector('.cat-pupils');
+    // A blueprint copy of the cat in the showcase section mirrors every pose.
+    const spec = document.getElementById('catSpec');
+    const cats = [cat];
+    if (spec) {
+      const copy = cat.querySelector('svg').cloneNode(true);
+      copy.querySelector('clipPath').id = 'catHeadClipSpec';
+      copy.querySelectorAll('[clip-path]').forEach(el => el.setAttribute('clip-path', 'url(#catHeadClipSpec)'));
+      spec.classList.add('cat-state');
+      spec.append(copy);
+      cats.push(spec);
+    }
+    const cls = {
+      add: (...n) => cats.forEach(c => c.classList.add(...n)),
+      remove: (...n) => cats.forEach(c => c.classList.remove(...n)),
+      contains: n => cat.classList.contains(n)
+    };
+    const pupilSets = cats.map(c => c.querySelector('.cat-pupils'));
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
     // A single weighted draw selects the level, then a fresh line within it.
     const fortunes = [
@@ -761,8 +861,8 @@
     }
     function pose(name, duration) {
       if (motion.matches) return;
-      cat.classList.add(name);
-      later(name, () => cat.classList.remove(name), duration);
+      cls.add(name);
+      later(name, () => cls.remove(name), duration);
     }
     function announce(text) {
       announcement.textContent = '';
@@ -770,8 +870,8 @@
     }
     function activity() {
       lastInput = Date.now();
-      if (cat.classList.contains('is-napping')) {
-        cat.classList.remove('is-napping');
+      if (cls.contains('is-napping')) {
+        cls.remove('is-napping');
         pose('is-waking', 650);
       }
     }
@@ -793,6 +893,7 @@
       slip.hidden = false;
       button.setAttribute('aria-expanded', 'true');
       pose('is-waving', 1400);
+      playChime(level.name === 'Great luck');
       announce(level.name + '. ' + text + ' ' + note.textContent);
     }
     function closeFortune(restoreFocus) {
@@ -805,11 +906,12 @@
     }
     function pet() {
       activity();
-      if (cat.classList.contains('is-petting')) return;
-      cat.classList.remove('is-blinking', 'is-waving', 'is-waking');
+      if (cls.contains('is-petting')) return;
+      cls.remove('is-blinking', 'is-waving', 'is-waking');
       // Still show a static happy expression with reduced motion.
-      cat.classList.add('is-petting');
-      later('is-petting', () => cat.classList.remove('is-petting'), 1600);
+      cls.add('is-petting');
+      later('is-petting', () => cls.remove('is-petting'), 1600);
+      playMrrp();
       announce('Purr. The cat approves.');
     }
     button.addEventListener('click', event => {
@@ -819,8 +921,14 @@
     document.getElementById('fortuneAgain').addEventListener('click', getFortune);
     document.getElementById('catPet').addEventListener('click', pet);
     document.getElementById('fortuneClose').addEventListener('click', () => closeFortune(true));
+    const NO_TAP = new Set(['Tab', 'Shift', 'Control', 'Alt', 'Meta', 'Escape', 'CapsLock', 'OS']);
+    const INTERACTIVE = 'a, button, input, textarea, select, label, [contenteditable]';
     document.addEventListener('keydown', event => {
       activity();
+      if (!event.repeat && !event.ctrlKey && !event.metaKey && !event.altKey && !NO_TAP.has(event.key)) {
+        const onControl = event.target.closest && event.target.closest(INTERACTIVE);
+        if (!(onControl && (event.key === 'Enter' || event.key === ' '))) tap();
+      }
       if (event.key === 'Escape' && !slip.hidden) {
         closeFortune(slip.contains(document.activeElement) || document.activeElement === button);
       }
@@ -829,10 +937,11 @@
       activity();
       if (!cat.contains(event.target) && !slip.contains(event.target)) {
         closeFortune(slip.contains(document.activeElement));
+        if (event.button === 0 && !(event.target.closest && event.target.closest(INTERACTIVE))) tap();
       }
     }, { passive: true });
 
-    function resetPupils() { pupils.removeAttribute('transform'); }
+    function resetPupils() { pupilSets.forEach(p => p.removeAttribute('transform')); }
     function stopHold() {
       clearTimer('hold');
       hold = null;
@@ -854,7 +963,8 @@
         const dy = pointer.y - (box.top + box.height * .57);
         const distance = Math.hypot(dx, dy) || 1;
         const radius = Math.min(1.8, distance / 120);
-        pupils.setAttribute('transform', `translate(${dx / distance * radius} ${dy / distance * radius})`);
+        const t = `translate(${dx / distance * radius} ${dy / distance * radius})`;
+        pupilSets.forEach(p => p.setAttribute('transform', t));
       });
     }, { passive: true });
     function release(event) {
@@ -890,7 +1000,7 @@
       raf = 0;
       resetPupils();
       for (const name of ['is-blinking', 'is-waving', 'is-petting', 'is-napping', 'is-waking']) {
-        cat.classList.remove(name);
+        cls.remove(name);
         clearTimer(name);
       }
       lastInput = Date.now();
@@ -910,10 +1020,10 @@
       const now = Date.now();
       if (!motion.matches) {
         if (now - lastInput >= 30000) {
-          cat.classList.add('is-napping');
-          cat.classList.remove('is-waving', 'is-blinking');
+          cls.add('is-napping');
+          cls.remove('is-waving', 'is-blinking');
           resetPupils();
-        } else if (!cat.classList.contains('is-petting')) {
+        } else if (!cls.contains('is-petting')) {
           if (now >= blinkAt) {
             pose('is-blinking', 150);
             blinkAt = now + 3000 + Math.random() * 3000;
@@ -926,6 +1036,102 @@
       }
       later('idle', tick, 250);
     }
+    // Drumming: every keypress or empty-page click is a paw tap.
+    const hero = cat.closest('.hero');
+    const comboBadge = document.getElementById('catCombo');
+    const statTaps = document.getElementById('statTaps');
+    const statCombo = document.getElementById('statCombo');
+    let side = 0, combo = 0, best = 0, taps = 0, lastTap = 0;
+    function restartClass(el, name) {
+      el.classList.remove(name);
+      void el.getBoundingClientRect();
+      el.classList.add(name);
+    }
+    function tap() {
+      const now = Date.now();
+      combo = now - lastTap < 650 ? combo + 1 : 1;
+      lastTap = now;
+      taps++;
+      best = Math.max(best, combo);
+      if (statTaps) statTaps.textContent = taps;
+      if (statCombo) statCombo.textContent = best;
+      side = 1 - side;
+      playTap(side);
+      if (combo >= 8) { comboBadge.textContent = '\u00d7' + combo; comboBadge.classList.add('is-on'); }
+      if (combo >= 25) cls.add('is-excited');
+      later('combo', () => { comboBadge.classList.remove('is-on'); cls.remove('is-excited'); }, 900);
+      if (motion.matches) return;
+      cls.remove('is-waving', 'is-napping');
+      clearTimer('is-waving');
+      const name = side ? 'tap-r' : 'tap-l';
+      cats.forEach(c => restartClass(c, name));
+      later(name, () => cls.remove(name), 220);
+      restartClass(hero, 'is-tapped');
+      later('bump', () => hero.classList.remove('is-tapped'), 160);
+    }
+
+    // Sound: off until the visitor turns it on; everything is synthesized, no audio files.
+    const soundBtn = document.getElementById('soundToggle');
+    let audio = null, soundOn = false, noise = null;
+    function voice(type, f0, f1, dur, vol, delay = 0) {
+      const t = audio.currentTime + delay;
+      const osc = audio.createOscillator(), gain = audio.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(f0, t);
+      osc.frequency.exponentialRampToValueAtTime(f1, t + dur);
+      gain.gain.setValueAtTime(vol, t);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      osc.connect(gain).connect(audio.destination);
+      osc.start(t);
+      osc.stop(t + dur + 0.02);
+    }
+    function playTap(right) {
+      if (!soundOn || !audio) return;
+      voice('sine', right ? 190 : 165, 60, 0.13, 0.32);
+      if (!noise) {
+        noise = audio.createBuffer(1, Math.floor(audio.sampleRate * 0.05), audio.sampleRate);
+        const d = noise.getChannelData(0);
+        for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / d.length);
+      }
+      const src = audio.createBufferSource(), band = audio.createBiquadFilter(), gain = audio.createGain();
+      src.buffer = noise;
+      band.type = 'bandpass';
+      band.frequency.value = right ? 2600 : 2200;
+      gain.gain.value = 0.18;
+      src.connect(band).connect(gain).connect(audio.destination);
+      src.start();
+    }
+    function playChime(great) {
+      if (!soundOn || !audio) return;
+      voice('sine', 784, 780, 0.5, 0.07);
+      voice('sine', 1175, 1170, 0.6, 0.06, 0.09);
+      if (great) voice('sine', 1568, 1560, 0.7, 0.05, 0.18);
+    }
+    function playMrrp() {
+      if (!soundOn || !audio) return;
+      voice('triangle', 380, 620, 0.12, 0.06);
+      voice('triangle', 620, 430, 0.18, 0.06, 0.12);
+    }
+    soundBtn.addEventListener('click', () => {
+      soundOn = !soundOn;
+      if (soundOn && !audio) {
+        try { audio = new (window.AudioContext || window.webkitAudioContext)(); } catch (_) { soundOn = false; }
+      }
+      if (soundOn && audio.state === 'suspended') audio.resume();
+      soundBtn.setAttribute('aria-pressed', String(soundOn));
+      soundBtn.textContent = soundOn ? 'Sound on' : 'Sound off';
+      if (soundOn) playMrrp();
+    });
+
+    // Live stats, measured from the page itself.
+    const statPool = document.getElementById('statPool');
+    const statSize = document.getElementById('statSize');
+    if (statPool) statPool.textContent = fortunes.reduce((n, f) => n + f.lines.length, 0);
+    if (statSize) {
+      const bytes = cat.querySelector('svg').outerHTML.length + document.getElementById('catScript').textContent.length;
+      statSize.textContent = (bytes / 1024).toFixed(1) + ' KB';
+    }
+
     cat.hidden = false;
     tick();
   })();

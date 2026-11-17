@@ -1,0 +1,7 @@
+{
+  "name": "heymaneki-site",
+  "private": true,
+  "description": "Tests for heymaneki.github.io",
+  "scripts": { "test": "node tests/cat.test.js" },
+  "devDependencies": { "puppeteer-core": "23.11.1" }
+}
