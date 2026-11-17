@@ -37,6 +37,9 @@
       --accent-hover: #a8441a;
       --on-accent: #ffffff;
       --gold: #f5c451;
+      --dot: #e2dacb;
+      --teal: #4fa89a;
+      --pink: #e98fa8;
       --shadow: 4px 4px 0px #1e1b18;
       --shadow-sm: 2px 2px 0px #1e1b18;
     }
@@ -52,6 +55,9 @@
       --accent-hover: #f5845d;
       --on-accent: #1e1b18;
       --gold: #eab308;
+      --dot: #262321;
+      --teal: #3f9488;
+      --pink: #d9799a;
       --shadow: 4px 4px 0px #0b0a09;
       --shadow-sm: 2px 2px 0px #0b0a09;
     }
@@ -65,6 +71,8 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: var(--bg);
+      background-image: radial-gradient(var(--dot) 1.2px, transparent 1.2px);
+      background-size: 22px 22px;
       color: var(--text);
       line-height: 1.6;
       padding: 1.75rem 1.15rem 3.5rem;
@@ -217,6 +225,19 @@
     .section-head h2 {
       font-size: 1.25rem;
       letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .section-head h2::before {
+      content: "";
+      width: 0.8rem;
+      height: 0.8rem;
+      border-radius: 3px;
+      border: 2px solid var(--ink);
+      background: var(--accent);
+      flex-shrink: 0;
     }
 
     .grid-2 {
@@ -296,8 +317,30 @@
     }
 
     .service {
-      padding: 1rem 1.25rem;
+      padding: 1rem 1.25rem 1rem 1.1rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 0.85rem;
     }
+
+    .service::before {
+      content: "";
+      width: 0.6rem;
+      border-radius: 999px;
+      border: 1.5px solid var(--ink);
+      background: var(--c, var(--accent));
+      grid-column: 1;
+      grid-row: 1 / span 2;
+    }
+
+    .service > * {
+      grid-column: 2;
+    }
+
+    .service:nth-child(1) { --c: var(--accent); }
+    .service:nth-child(2) { --c: var(--gold); }
+    .service:nth-child(3) { --c: var(--teal); }
+    .service:nth-child(4) { --c: var(--pink); }
 
     .service + .service {
       border-top: 1.5px dashed var(--ink);
@@ -318,9 +361,14 @@
       background: var(--card-alt);
       border: 2px dashed var(--ink);
       border-radius: 14px;
-      padding: 1.25rem;
+      padding: 1.15rem 1.25rem;
       color: var(--muted);
       font-size: 0.93rem;
+    }
+
+    .empty-shelf .tag-live {
+      display: inline-block;
+      margin-bottom: 0.55rem;
     }
 
     /* FOOTER */
@@ -376,7 +424,8 @@
       </p>
 
       <div class="links">
-        <a class="btn btn-primary" href="https://heymaneki.itch.io" target="_blank" rel="noopener">Itch.io</a>
+        <a class="btn btn-primary" href="mailto:heymaneki@gmail.com">Email me</a>
+        <a class="btn" href="https://heymaneki.itch.io" target="_blank" rel="noopener">Itch.io</a>
         <a class="btn" href="https://heymaneki.gumroad.com" target="_blank" rel="noopener">Gumroad</a>
         <a class="btn" href="https://github.com/heymaneki" target="_blank" rel="noopener">GitHub</a>
         <button class="btn" id="copyEmailBtn" type="button">Copy email</button>
@@ -395,8 +444,8 @@
           <p>If you need a simple calculator, a random generator, or a single-page tool that does one specific job, I can put it together for you.</p>
         </div>
         <div class="service">
-          <h3>Voiceovers and audio</h3>
-          <p>Character lines, narration, or sound effects for videos and games. I clean up the recordings myself and send over finished WAV or MP3 files.</p>
+          <h3>AI voiceovers and audio</h3>
+          <p>AI voiceovers made with ElevenLabs for videos and games: character lines, narration, short ads. I generate a few takes, pick the best ones, edit them, and send finished WAV or MP3 files.</p>
         </div>
         <div class="service">
           <h3>Writing and cleanup</h3>
@@ -420,7 +469,8 @@
       </div>
 
       <div class="empty-shelf">
-        Nothing up here just yet. I literally just set this page up. I'm working on a couple of small tools and audio packs right now, and I'll post the links here as soon as they're actually done.
+        <span class="tag-live">In progress</span>
+        <p>I'm finishing my first few small tools and audio packs. They'll show up here as soon as they're ready.</p>
       </div>
 
       <!-- WHEN YOU SHIP ITEM #1, REPLACE THE .empty-shelf DIV ABOVE WITH THIS GRID:
