@@ -6,7 +6,7 @@
   <title>Maneki (@heymaneki)</title>
   <meta name="description" content="Maneki makes small web tools, voice packs, and game assets. Need a small job done? Get in touch." />
   <meta name="theme-color" content="#f6f1e7" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐱</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23f5c451' stroke='%231e1b18' stroke-width='6'/><text x='50' y='68' font-family='sans-serif' font-size='52' font-weight='800' text-anchor='middle' fill='%231e1b18'>M</text></svg>" />
   <link rel="canonical" href="https://heymaneki.github.io/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://heymaneki.github.io/" />
@@ -28,7 +28,6 @@
   <style>
     :root {
       --bg: #f6f1e7;
-      --dot: #dcd3c4;
       --card: #fffdf9;
       --card-alt: #f2ebe0;
       --text: #1e1b18;
@@ -44,7 +43,6 @@
 
     [data-theme="dark"] {
       --bg: #161514;
-      --dot: #2a2725;
       --card: #211f1d;
       --card-alt: #2a2724;
       --text: #f5efe6;
@@ -67,8 +65,6 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: var(--bg);
-      background-image: radial-gradient(var(--dot) 1.25px, transparent 1.25px);
-      background-size: 20px 20px;
       color: var(--text);
       line-height: 1.6;
       padding: 1.75rem 1.15rem 3.5rem;
@@ -83,15 +79,9 @@
     /* TOP BAR */
     .topbar {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       margin-bottom: 1.15rem;
-    }
-
-    .site-url {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--muted);
     }
 
     .theme-btn {
@@ -142,6 +132,8 @@
       align-items: center;
       justify-content: center;
       font-size: 1.9rem;
+      font-weight: 800;
+      color: #1e1b18;
     }
 
     .avatar-wrap img {
@@ -296,6 +288,32 @@
       font-weight: 700;
     }
 
+    .services {
+      background: var(--card);
+      border: 2px solid var(--ink);
+      box-shadow: var(--shadow);
+      border-radius: 14px;
+    }
+
+    .service {
+      padding: 1rem 1.25rem;
+    }
+
+    .service + .service {
+      border-top: 1.5px dashed var(--ink);
+    }
+
+    .service h3 {
+      font-size: 1rem;
+      line-height: 1.3;
+      margin-bottom: 0.25rem;
+    }
+
+    .service p {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
     .empty-shelf {
       background: var(--card-alt);
       border: 2px dashed var(--ink);
@@ -334,8 +352,7 @@
   <div class="container">
     <!-- TOP BAR -->
     <div class="topbar">
-      <span class="site-url">heymaneki.github.io</span>
-      <button class="theme-btn" id="themeToggle" type="button">🌙 Dark mode</button>
+      <button class="theme-btn" id="themeToggle" type="button">Dark mode</button>
     </div>
 
     <!-- HERO -->
@@ -345,7 +362,7 @@
           <img
             src="https://github.com/heymaneki.png"
             alt="Maneki avatar"
-            onerror="this.style.display='none'; this.parentElement.textContent='🐱';"
+            onerror="this.style.display='none'; this.parentElement.textContent='M';"
           />
         </div>
         <div class="hero-title">
@@ -355,49 +372,38 @@
       </div>
 
       <p class="bio">
-        I make small web tools, voice packs, and weird little game assets. One fella doing all the work here—it's AI-assisted to move faster, then cleaned up by hand and tested so you don't have to fix anything.
+        I make small web tools, voice packs, and weird little game assets. One fella doing all the work here. It's AI-assisted to move faster, then cleaned up by hand and tested so you don't have to fix anything.
       </p>
 
       <div class="links">
-        <a class="btn btn-primary" href="https://heymaneki.itch.io" target="_blank" rel="noopener">Itch.io ↗</a>
-        <a class="btn" href="https://heymaneki.gumroad.com" target="_blank" rel="noopener">Gumroad ↗</a>
-        <a class="btn" href="https://github.com/heymaneki" target="_blank" rel="noopener">GitHub ↗</a>
-        <button class="btn" id="copyEmailBtn" type="button">📋 Copy Email</button>
+        <a class="btn btn-primary" href="https://heymaneki.itch.io" target="_blank" rel="noopener">Itch.io</a>
+        <a class="btn" href="https://heymaneki.gumroad.com" target="_blank" rel="noopener">Gumroad</a>
+        <a class="btn" href="https://github.com/heymaneki" target="_blank" rel="noopener">GitHub</a>
+        <button class="btn" id="copyEmailBtn" type="button">Copy email</button>
       </div>
     </header>
 
-    <!-- SECTION 1: WHAT I CAN HELP WITH -->
+    <!-- WHAT I CAN HELP WITH -->
     <section>
       <div class="section-head">
-        <h2>What I Can Help With</h2>
+        <h2>What I can help with</h2>
       </div>
 
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-top">
-            <h3>Small Web Tools &amp; Scripts</h3>
-          </div>
+      <div class="services">
+        <div class="service">
+          <h3>Small web tools and scripts</h3>
           <p>If you need a simple calculator, a random generator, or a single-page tool that does one specific job, I can put it together for you.</p>
         </div>
-
-        <div class="card">
-          <div class="card-top">
-            <h3>Voiceovers &amp; Audio</h3>
-          </div>
+        <div class="service">
+          <h3>Voiceovers and audio</h3>
           <p>Character lines, narration, or sound effects for videos and games. I clean up the recordings myself and send over finished WAV or MP3 files.</p>
         </div>
-
-        <div class="card">
-          <div class="card-top">
-            <h3>Writing &amp; Cleanup</h3>
-          </div>
+        <div class="service">
+          <h3>Writing and cleanup</h3>
           <p>Short video scripts, store descriptions, or taking a pile of messy notes and turning them into something clear and readable.</p>
         </div>
-
-        <div class="card">
-          <div class="card-top">
-            <h3>Graphics &amp; Asset Packs</h3>
-          </div>
+        <div class="service">
+          <h3>Graphics and asset packs</h3>
           <p>Simple icons, thumbnails, mockups, or bundled asset packs when you just need solid visuals without a huge budget.</p>
         </div>
       </div>
@@ -407,21 +413,21 @@
       </p>
     </section>
 
-    <!-- SECTION 2: THINGS I'VE MADE -->
+    <!-- THINGS I'VE MADE -->
     <section>
       <div class="section-head">
-        <h2>Things I've Made</h2>
+        <h2>Things I've made</h2>
       </div>
 
       <div class="empty-shelf">
-        Nothing up here just yet—I literally just set this page up. I'm working on a couple of small tools and audio packs right now, and I'll post the links here as soon as they're actually done.
+        Nothing up here just yet. I literally just set this page up. I'm working on a couple of small tools and audio packs right now, and I'll post the links here as soon as they're actually done.
       </div>
 
       <!-- WHEN YOU SHIP ITEM #1, REPLACE THE .empty-shelf DIV ABOVE WITH THIS GRID:
       <div class="grid-2">
         <a class="card" href="https://YOUR-LINK-HERE" target="_blank" rel="noopener">
           <div class="card-top">
-            <h3>Actual Project Name ↗</h3>
+            <h3>Actual Project Name</h3>
             <span class="tag-live">Free Tool</span>
           </div>
           <p>One honest sentence describing what it actually does.</p>
@@ -454,7 +460,7 @@
       } else {
         root.removeAttribute('data-theme');
       }
-      themeToggle.textContent = dark ? '☀️ Light mode' : '🌙 Dark mode';
+      themeToggle.textContent = dark ? 'Light mode' : 'Dark mode';
       themeMeta.setAttribute('content', dark ? '#161514' : '#f6f1e7');
     }
 
@@ -482,7 +488,7 @@
     copyBtn.addEventListener('click', async () => {
       try {
         await navigator.clipboard.writeText(EMAIL);
-        copyBtn.textContent = '✅ Copied!';
+        copyBtn.textContent = 'Copied';
         clearTimeout(copyTimer);
         copyTimer = setTimeout(() => { copyBtn.textContent = copyLabel; }, 1800);
       } catch (e) {
