@@ -395,21 +395,20 @@
       .hero-title h1 { font-size: 1.65rem; }
     }
     /* Lucky cat — fixed colors so it is the same white calico in both themes. */
-    .cat-perch { --cat-fur: #fffaf2; --cat-line: #1e1b18; --cat-orange: #e0773f; --cat-dark: #3a332d; --cat-red: #c4501f; --cat-gold: #f5c451; --cat-blush: #f4a9bb; }
-    .hero { position: relative; margin-top: 6rem; }
-    .hero-top { padding-right: 8.5rem; }
-    .cat-perch { position: absolute; right: 1.1rem; top: -5.6rem; width: 136px; z-index: 1; }
+    .cat-perch { --cat-fur: #fffaf2; --cat-line: #2b2622; --cat-orange: #e0773f; --cat-dark: #3a332d; --cat-red: #c4501f; --cat-gold: #f5c451; --cat-blush: #f4a9bb; }
+    .hero { position: relative; margin-top: 6.25rem; }
+        .cat-perch { position: absolute; right: 1.6rem; top: calc(-150px * 100 / 180 - 2px); width: 150px; z-index: 1; }
     .cat-button { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 0; border: 0; background: none; color: var(--text); cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
     .cat-art { width: 100%; height: auto; overflow: visible; }
     [data-theme="dark"] .cat-art { filter: drop-shadow(0 0 1.2px rgba(255, 250, 242, .7)); }
-    .cat-label { margin-top: -3px; padding: 2px 10px; font-family: inherit; font-size: .72rem; font-weight: 700; line-height: 1.6; background: var(--card); border: 1.5px solid var(--ink); border-radius: 999px; box-shadow: var(--shadow-sm); white-space: nowrap; }
+    .cat-label { position: absolute; right: 100%; bottom: calc(12 / 112 * 100% + 4px); margin-right: -6px; padding: 2px 10px; font-family: inherit; font-size: .72rem; font-weight: 700; line-height: 1.6; background: var(--card); border: 1.5px solid var(--ink); border-radius: 999px; box-shadow: var(--shadow-sm); white-space: nowrap; }
     .cat-button:hover .cat-label { background: var(--card-alt); }
     .cat-button:focus-visible { outline: 3px solid var(--text); outline-offset: 5px; border-radius: 18px; }
     .fortune-slip button:focus-visible { outline: 3px solid var(--text); outline-offset: 4px; }
-    .cat-paw { transform-origin: 48px 123px; }
-    .cat-head { transform-origin: 90px 108px; }
-    .cat-tail { transform-origin: 132px 154px; }
-    .cat-body { transform-origin: 90px 177px; }
+    .cat-paw { transform-origin: 52px 108px; }
+    .cat-head { transform-origin: 90px 100px; }
+    .cat-tail { transform-origin: 136px 162px; }
+    .cat-body { transform-origin: 90px 104px; }
     .cat-eyes { transform-box: fill-box; transform-origin: center; }
     .cat-closed-eyes, .cat-hearts, .cat-zzz { opacity: 0; }
     .cat-perch.is-blinking .cat-eyes { transform: scaleY(.08); }
@@ -422,12 +421,10 @@
     .cat-perch.is-petting .cat-heart { animation: cat-heart 1.3s ease-out both; }
     .cat-perch.is-petting .h2 { animation-delay: .12s; }
     .cat-perch.is-petting .h3 { animation-delay: .24s; }
-    .cat-perch.is-napping .cat-head { transform: translateY(5px) rotate(6deg); }
-    .cat-perch.is-napping .cat-body { transform: translateY(8px) scaleY(.94); }
-    .cat-perch.is-napping .cat-paw { transform: rotate(-24deg); }
-    .cat-perch.is-napping .cat-zzz { animation: cat-snooze 3s ease-in-out infinite; }
+    .cat-perch.is-napping .cat-head { transform: translateY(4px); }
+            .cat-perch.is-napping .cat-zzz { animation: cat-snooze 3s ease-in-out infinite; }
     .cat-perch.is-waking .cat-body { animation: cat-stretch .6s ease-in-out; }
-    @keyframes cat-wave { 0%,100% { transform: rotate(0); } 25%,65% { transform: rotate(18deg); } 45%,85% { transform: rotate(-8deg); } }
+    @keyframes cat-wave { 0%,100% { transform: none; } 20%,60% { transform: translateY(-22px) rotate(-10deg); } 40%,80% { transform: translateY(-16px) rotate(6deg); } }
     @keyframes cat-purr { from { transform: rotate(-1deg); } to { transform: rotate(1deg); } }
     @keyframes cat-tail { to { transform: rotate(-12deg); } }
     @keyframes cat-heart { 0% { opacity: 0; transform: translateY(8px); } 25% { opacity: 1; } 100% { opacity: 0; transform: translateY(-22px); } }
@@ -449,9 +446,8 @@
     [hidden] { display: none !important; }
     @keyframes slip-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
     @media (max-width: 480px) {
-      .hero { margin-top: 8.4rem; }
-      .hero-top { padding-right: 0; }
-      .cat-perch { width: 104px; right: 1rem; top: -8.25rem; }
+      .hero { margin-top: 5.25rem; }
+      .cat-perch { width: 116px; right: 1rem; top: calc(-116px * 100 / 180 - 2px); }
       .fortune-slip { padding: .8rem .9rem 1rem; }
       .fortune-signature { flex-basis: 100%; margin-top: .3rem; }
     }
@@ -474,58 +470,32 @@
       <!-- Lucky cat: artwork and interaction are self-contained. -->
       <div class="cat-perch" id="luckyCat" hidden>
         <button class="cat-button" id="catButton" type="button" aria-label="Lucky cat: get a fortune" aria-expanded="false" aria-controls="fortuneSlip">
-          <svg class="cat-art" viewBox="0 0 180 190" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <defs>
-              <clipPath id="catFaceClip"><path d="M45 80 Q39 54 45 32 Q48 20 58 27 L75 41 Q90 37 105 41 L122 27 Q132 20 135 32 Q141 54 135 80 Q133 113 90 114 Q47 113 45 80Z"/></clipPath>
-            </defs>
-            <g class="cat-hearts" fill="var(--cat-blush)" stroke="var(--cat-line)" stroke-width="2">
-              <path class="cat-heart h1" d="M28 47 C12 36 24 24 28 33 C34 22 45 35 28 47Z"/>
-              <path class="cat-heart h2" d="M151 37 C137 26 148 17 151 24 C157 16 165 28 151 37Z"/>
-              <path class="cat-heart h3" d="M95 22 C80 11 91 2 95 10 C101 1 110 13 95 22Z"/>
-            </g>
-            <text class="cat-zzz" x="147" y="41" fill="var(--muted)" font-family="Georgia, serif" font-style="italic" font-size="20">z z</text>
-            <ellipse cx="90" cy="178" rx="58" ry="7" fill="#000" opacity=".12"/>
-            <g class="cat-body" stroke="var(--cat-line)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
-              <g class="cat-tail"><path d="M128 160 C161 169 170 144 157 130 C149 121 144 132 151 137 C159 147 147 154 133 148" fill="var(--cat-orange)"/></g>
-              <path d="M62 103 Q42 124 46 165 Q46 177 61 177 H120 Q136 177 136 163 Q136 123 116 103Z" fill="var(--cat-fur)"/>
-              <path d="M48 141 Q66 137 68 155 Q69 167 59 176 H52 Q44 169 48 141Z" fill="var(--cat-orange)" stroke="none"/>
-              <path d="M113 158 Q112 144 128 139 L134 154 L133 167Z" fill="var(--cat-dark)" stroke="none"/>
-              <path d="M74 176 V167 Q61 156 52 169 M105 176 V168 Q117 157 128 170"/>
-              <path d="M59 174 V177 M65 173 V177 M114 173 V177 M121 173 V177" stroke-width="2"/>
+          <svg class="cat-art" viewBox="0 0 180 112" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <g class="cat-body" stroke="var(--cat-line)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
               <g class="cat-head">
-                <path d="M45 80 Q39 54 45 32 Q48 20 58 27 L75 41 Q90 37 105 41 L122 27 Q132 20 135 32 Q141 54 135 80 Q133 113 90 114 Q47 113 45 80Z" fill="var(--cat-fur)"/>
-                <g clip-path="url(#catFaceClip)" stroke="none">
-                  <path d="M35 15 H78 Q86 52 58 60 L35 62Z" fill="var(--cat-orange)"/>
-                  <path d="M108 15 H148 V64 Q114 60 106 46Z" fill="var(--cat-dark)"/>
-                  <ellipse cx="58" cy="92" rx="9" ry="5" fill="var(--cat-blush)" opacity=".8"/>
-                  <ellipse cx="122" cy="92" rx="9" ry="5" fill="var(--cat-blush)" opacity=".8"/>
-                </g>
-                <path d="M51 34 L53 48 L63 43 M129 34 L117 43 L127 48" fill="var(--cat-blush)" stroke-width="2"/>
+                <path d="M22 100 Q18 62 40 47 L42 27 Q43 20 50 24 L68 36 Q90 31 112 36 L130 24 Q137 20 138 27 L140 47 Q162 62 158 100Z" fill="var(--cat-fur)"/>
+                <path d="M47 31 L48 41 L57 37Z M133 31 L123 37 L132 41Z" fill="var(--cat-blush)" stroke="none" opacity=".8"/>
+                <ellipse cx="55" cy="74" rx="7" ry="3.6" fill="var(--cat-blush)" stroke="none" opacity=".55"/>
+                <ellipse cx="125" cy="74" rx="7" ry="3.6" fill="var(--cat-blush)" stroke="none" opacity=".55"/>
                 <g class="cat-eyes">
-                  <g class="cat-pupils" stroke="none">
-                    <ellipse cx="70" cy="81" rx="6" ry="7.5" fill="var(--cat-line)"/>
-                    <ellipse cx="110" cy="81" rx="6" ry="7.5" fill="var(--cat-line)"/>
-                    <circle cx="68" cy="78" r="2.2" fill="#fff"/><circle cx="108" cy="78" r="2.2" fill="#fff"/>
-                  </g>
+                  <g class="cat-pupils" fill="var(--cat-line)" stroke="none"><ellipse cx="67" cy="64" rx="3.3" ry="3.8"/><ellipse cx="113" cy="64" rx="3.3" ry="3.8"/></g>
                 </g>
-                <g class="cat-closed-eyes"><path d="M63 82 Q70 75 77 82 M103 82 Q110 75 117 82"/></g>
-                <path d="M87 89 Q90 87.5 93 89 L90 92Z" fill="var(--cat-orange)" stroke-width="2"/>
-                <path d="M90 93 Q86 99 82 95 M90 93 Q94 99 98 95" stroke-width="2"/>
-                <path d="M50 86 L37 83 M50 93 L38 95 M130 86 L143 83 M130 93 L142 95" stroke-width="2"/>
+                <g class="cat-closed-eyes" stroke-width="2.2"><path d="M61 65 Q67 60 73 65 M107 65 Q113 60 119 65"/></g>
+                <path d="M84 71 Q87 75 90 71 Q93 75 96 71" stroke-width="2.2"/>
               </g>
-              <path d="M60 110 Q89 123 119 110 L117 119 Q90 132 62 119Z" fill="var(--cat-red)"/>
-              <circle cx="90" cy="126" r="8" fill="var(--cat-gold)" stroke-width="2"/>
-              <path d="M86 125 H94 M90 129 V133" stroke-width="2"/>
-              <ellipse cx="92" cy="153" rx="18" ry="22" fill="var(--cat-gold)"/>
-              <ellipse cx="92" cy="153" rx="12" ry="16" stroke-width="1.5"/>
-              <path d="M92 143 V163 M87 147 H96 M87 153 H96 M87 159 H96" stroke-width="2"/>
-              <path d="M111 134 Q121 130 123 141 Q123 151 109 152 Q102 148 108 143" fill="var(--cat-fur)"/>
+              <ellipse cx="128" cy="101" rx="17" ry="9" fill="var(--cat-fur)"/>
               <g class="cat-paw">
-                <path d="M54 132 Q35 145 26 125 L23 102 Q17 78 31 74 Q48 70 49 88 L49 111 L59 115" fill="var(--cat-fur)"/>
-                <path d="M26 87 L27 94 M33 84 L34 92 M40 86 L41 94" stroke-width="2"/>
-                <ellipse cx="35" cy="106" rx="6" ry="7" fill="var(--cat-blush)" stroke="none"/>
+                <ellipse cx="52" cy="101" rx="17" ry="9" fill="var(--cat-fur)"/>
+                <path d="M47 98 V102 M52 97 V102 M57 98 V102" stroke-width="1.8"/>
               </g>
+              <path d="M123 98 V102 M128 97 V102 M133 98 V102" stroke-width="1.8"/>
             </g>
+            <g class="cat-hearts" fill="var(--cat-blush)" stroke="var(--cat-line)" stroke-width="1.8">
+              <path class="cat-heart h1" d="M24 40 C11 31 20 21 24 28 C29 19 38 30 24 40Z"/>
+              <path class="cat-heart h2" d="M157 36 C145 27 154 18 157 25 C162 17 170 28 157 36Z"/>
+              <path class="cat-heart h3" d="M90 22 C77 13 86 4 90 11 C95 3 103 14 90 22Z"/>
+            </g>
+            <text class="cat-zzz" x="140" y="20" fill="var(--muted)" font-family="Georgia, serif" font-style="italic" font-size="18">z z</text>
           </svg>
           <span class="cat-label">Ask the cat</span>
         </button>
@@ -871,7 +841,7 @@
         raf = 0;
         const box = cat.querySelector('svg').getBoundingClientRect();
         const dx = pointer.x - (box.left + box.width / 2);
-        const dy = pointer.y - (box.top + box.height * .41);
+        const dy = pointer.y - (box.top + box.height * .57);
         const distance = Math.hypot(dx, dy) || 1;
         const radius = Math.min(1.8, distance / 120);
         pupils.setAttribute('transform', `translate(${dx / distance * radius} ${dy / distance * radius})`);
