@@ -4,6 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Maneki (@heymaneki)</title>
+  <meta name="description" content="Maneki makes small web tools, voice packs, and game assets. Need a small job done? Get in touch." />
+  <meta name="theme-color" content="#f6f1e7" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐱</text></svg>" />
+  <link rel="canonical" href="https://heymaneki.github.io/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://heymaneki.github.io/" />
+  <meta property="og:title" content="Maneki (@heymaneki)" />
+  <meta property="og:description" content="Small web tools, voice packs, and weird little game assets." />
+  <meta property="og:image" content="https://github.com/heymaneki.png" />
+  <meta name="twitter:card" content="summary" />
+  <script>
+    // Apply the theme before first paint so dark-mode visitors don't see a light flash.
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('maneki-theme'); } catch (e) {}
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (saved !== 'light' && prefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
   <style>
     :root {
       --bg: #f6f1e7;
@@ -13,8 +34,9 @@
       --text: #1e1b18;
       --muted: #5c554e;
       --ink: #1e1b18;
-      --accent: #e06338;
-      --accent-hover: #c95128;
+      --accent: #c4501f;
+      --accent-hover: #a8441a;
+      --on-accent: #ffffff;
       --gold: #f5c451;
       --shadow: 4px 4px 0px #1e1b18;
       --shadow-sm: 2px 2px 0px #1e1b18;
@@ -30,6 +52,7 @@
       --ink: #4a443e;
       --accent: #eb7349;
       --accent-hover: #f5845d;
+      --on-accent: #1e1b18;
       --gold: #eab308;
       --shadow: 4px 4px 0px #0b0a09;
       --shadow-sm: 2px 2px 0px #0b0a09;
@@ -183,7 +206,7 @@
 
     .btn-primary {
       background: var(--accent);
-      color: #ffffff;
+      color: var(--on-accent);
     }
 
     .btn-primary:hover {
@@ -414,35 +437,56 @@
   </div>
 
   <script>
-    const themeToggle = document.getElementById('themeToggle');
-    const root = document.documentElement;
-    if (localStorage.getItem('maneki-theme') === 'dark') {
-      root.setAttribute('data-theme', 'dark');
-      themeToggle.textContent = '☀️ Light mode';
+    function readTheme() {
+      try { return localStorage.getItem('maneki-theme'); } catch (e) { return null; }
+    }
+    function saveTheme(value) {
+      try { localStorage.setItem('maneki-theme', value); } catch (e) {}
     }
 
-    themeToggle.addEventListener('click', () => {
-      const isDark = root.getAttribute('data-theme') === 'dark';
-      if (isDark) {
-        root.removeAttribute('data-theme');
-        localStorage.setItem('maneki-theme', 'light');
-        themeToggle.textContent = '🌙 Dark mode';
-      } else {
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+    function applyTheme(dark) {
+      if (dark) {
         root.setAttribute('data-theme', 'dark');
-        localStorage.setItem('maneki-theme', 'dark');
-        themeToggle.textContent = '☀️ Light mode';
+      } else {
+        root.removeAttribute('data-theme');
       }
+      themeToggle.textContent = dark ? '☀️ Light mode' : '🌙 Dark mode';
+      themeMeta.setAttribute('content', dark ? '#161514' : '#f6f1e7');
+    }
+
+    // The <head> script already set data-theme; sync the button label to it.
+    applyTheme(root.getAttribute('data-theme') === 'dark');
+
+    themeToggle.addEventListener('click', () => {
+      const dark = root.getAttribute('data-theme') !== 'dark';
+      applyTheme(dark);
+      saveTheme(dark ? 'dark' : 'light');
     });
 
+    // Follow system changes until the visitor picks a theme themselves.
+    if (window.matchMedia) {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      const onChange = (e) => { if (!readTheme()) applyTheme(e.matches); };
+      if (mq.addEventListener) mq.addEventListener('change', onChange);
+      else if (mq.addListener) mq.addListener(onChange);
+    }
+
+    const EMAIL = 'heymaneki@gmail.com';
     const copyBtn = document.getElementById('copyEmailBtn');
+    const copyLabel = copyBtn.textContent;
+    let copyTimer;
     copyBtn.addEventListener('click', async () => {
       try {
-        await navigator.clipboard.writeText('heymaneki@gmail.com');
-        const original = copyBtn.textContent;
+        await navigator.clipboard.writeText(EMAIL);
         copyBtn.textContent = '✅ Copied!';
-        setTimeout(() => { copyBtn.textContent = original; }, 1800);
-      } catch {
-        window.location.href = 'mailto:heymaneki@gmail.com';
+        clearTimeout(copyTimer);
+        copyTimer = setTimeout(() => { copyBtn.textContent = copyLabel; }, 1800);
+      } catch (e) {
+        window.location.href = 'mailto:' + EMAIL;
       }
     });
   </script>
