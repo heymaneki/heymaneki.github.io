@@ -6,15 +6,51 @@
   <title>Maneki — Web Tools, Voiceovers, Writing & Digital Assets</title>
   <style>
     :root {
-      --bg: #faf7f2;
-      --card: #ffffff;
-      --text: #262322;
-      --muted: #665f5b;
-      --accent: #e0723c;
-      --accent-hover: #c95f2b;
-      --border: #e6dfd5;
-      --pill-bg: #f2e8dc;
-      --pill-text: #8a4b27;
+      --bg: #f6f1e7;
+      --dot: #dcd3c4;
+      --card: #fffdf9;
+      --card-alt: #f2ebe0;
+      --text: #1e1b18;
+      --muted: #5c554e;
+      --ink: #1e1b18;
+      --accent: #e06338;
+      --accent-hover: #c95128;
+      --gold: #f5c451;
+      --green: #2e8b57;
+      --code-bg: #e3eef8;
+      --code-text: #1d4e7a;
+      --audio-bg: #fde8df;
+      --audio-text: #9c3818;
+      --text-bg: #e6f4ea;
+      --text-text: #1e6238;
+      --asset-bg: #fef3d6;
+      --asset-text: #855a08;
+      --shadow: 4px 4px 0px #1e1b18;
+      --shadow-sm: 2px 2px 0px #1e1b18;
+    }
+
+    [data-theme="dark"] {
+      --bg: #161514;
+      --dot: #2a2725;
+      --card: #211f1d;
+      --card-alt: #2a2724;
+      --text: #f5efe6;
+      --muted: #b0a89e;
+      --ink: #4a443e;
+      --accent: #eb7349;
+      --accent-hover: #f5845d;
+      --gold: #eab308;
+      --green: #4ade80;
+      --code-bg: #1c2d3d;
+      --code-text: #7cc0f8;
+      --audio-bg: #3b221a;
+      --audio-text: #f79d7e;
+      --text-bg: #1a3324;
+      --text-text: #7ee2a4;
+      --asset-bg: #382d14;
+      --asset-text: #facc15;
+      --shadow: 4px 4px 0px #0b0a09;
+      --shadow-sm: 2px 2px 0px #0b0a09;
     }
 
     * {
@@ -26,144 +62,276 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: var(--bg);
+      background-image: radial-gradient(var(--dot) 1.25px, transparent 1.25px);
+      background-size: 20px 20px;
       color: var(--text);
       line-height: 1.6;
-      padding: 2.5rem 1.25rem;
+      padding: 1.75rem 1.15rem 3.5rem;
+      transition: background-color 0.2s ease, color 0.2s ease;
     }
 
     .container {
-      max-width: 720px;
+      max-width: 740px;
       margin: 0 auto;
     }
 
-    header {
+    /* TOP UTILITY BAR */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      gap: 0.75rem;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--card);
+      border: 2px solid var(--ink);
+      box-shadow: var(--shadow-sm);
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      display: inline-block;
+    }
+
+    .theme-btn {
+      background: var(--card);
+      color: var(--text);
+      border: 2px solid var(--ink);
+      box-shadow: var(--shadow-sm);
+      border-radius: 999px;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.1s ease;
+    }
+
+    .theme-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: none;
+    }
+
+    /* HERO CARD */
+    .hero {
+      background: var(--card);
+      border: 2px solid var(--ink);
+      box-shadow: var(--shadow);
+      border-radius: 18px;
+      padding: 1.65rem;
       margin-bottom: 2.25rem;
     }
 
-    .badge {
-      display: inline-block;
-      background: var(--pill-bg);
-      color: var(--pill-text);
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 0.25rem 0.65rem;
-      border-radius: 999px;
-      margin-bottom: 0.75rem;
+    .hero-top {
+      display: flex;
+      align-items: center;
+      gap: 1.15rem;
+      margin-bottom: 1rem;
     }
 
-    h1 {
+    .avatar-wrap {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      border: 2px solid var(--ink);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 2rem;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.6rem;
+    }
+
+    .avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-title h1 {
+      font-size: 2rem;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+
+    .handle {
+      display: inline-block;
+      margin-top: 0.2rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--muted);
     }
 
     .bio {
       color: var(--muted);
-      font-size: 1.02rem;
-      margin-bottom: 1.25rem;
+      font-size: 1rem;
+      margin-bottom: 1.35rem;
     }
 
     .links {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
+      gap: 0.65rem;
     }
 
     .btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
       padding: 0.55rem 1rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
+      border-radius: 10px;
+      border: 2px solid var(--ink);
+      box-shadow: var(--shadow-sm);
       background: var(--card);
       color: var(--text);
-      transition: border-color 0.15s ease;
+      cursor: pointer;
+      transition: transform 0.1s ease, background-color 0.15s ease;
     }
 
     .btn:hover {
-      border-color: var(--accent);
+      background: var(--card-alt);
+    }
+
+    .btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: none;
     }
 
     .btn-primary {
       background: var(--accent);
       color: #ffffff;
-      border-color: var(--accent);
     }
 
     .btn-primary:hover {
       background: var(--accent-hover);
-      border-color: var(--accent-hover);
     }
 
+    /* SECTIONS */
     section {
-      margin-top: 2.25rem;
+      margin-top: 2.4rem;
     }
 
     .section-head {
-      margin-bottom: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
     }
 
     .section-head h2 {
-      font-size: 1.2rem;
-      color: var(--text);
+      font-size: 1.3rem;
+      letter-spacing: -0.02em;
     }
 
     .section-head p {
       font-size: 0.9rem;
       color: var(--muted);
+      width: 100%;
     }
 
     .grid-2 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 0.9rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
     }
 
     .card {
       background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.15rem 1.25rem;
+      border: 2px solid var(--ink);
+      box-shadow: var(--shadow);
+      border-radius: 14px;
+      padding: 1.2rem 1.25rem;
       text-decoration: none;
       color: inherit;
-      display: block;
-      transition: border-color 0.15s ease, transform 0.1s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.12s ease;
     }
 
     a.card:hover {
-      border-color: var(--accent);
-      transform: translateY(-1px);
+      transform: translate(-1px, -1px);
+    }
+
+    a.card:active {
+      transform: translate(2px, 2px);
+      box-shadow: var(--shadow-sm);
     }
 
     .card-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.4rem;
+      gap: 0.6rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .card-title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .icon-box {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1.5px solid var(--ink);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
 
     .card h3 {
-      font-size: 1rem;
+      font-size: 1.02rem;
+      line-height: 1.25;
     }
 
     .tag {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--muted);
-      background: var(--bg);
-      padding: 0.15rem 0.55rem;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.2rem 0.55rem;
       border-radius: 6px;
-      border: 1px solid var(--border);
+      border: 1.5px solid var(--ink);
       white-space: nowrap;
     }
 
+    .tag-code { background: var(--code-bg); color: var(--code-text); }
+    .tag-audio { background: var(--audio-bg); color: var(--audio-text); }
+    .tag-text { background: var(--text-bg); color: var(--text-text); }
+    .tag-asset { background: var(--asset-bg); color: var(--asset-text); }
+
+    .tag-wip {
+      background: var(--card-alt);
+      color: var(--muted);
+    }
+
     .tag-live {
-      background: var(--pill-bg);
-      color: var(--pill-text);
-      border-color: transparent;
+      background: var(--gold);
+      color: #1e1b18;
     }
 
     .card p {
@@ -171,30 +339,33 @@
       font-size: 0.92rem;
     }
 
-    .cta-bar {
-      margin-top: 1rem;
-      background: var(--card);
-      border: 1px dashed var(--border);
-      border-radius: 10px;
-      padding: 0.9rem 1.15rem;
-      font-size: 0.9rem;
-      color: var(--muted);
+    /* CUSTOM REQUEST BANNER */
+    .cta-banner {
+      margin-top: 1.15rem;
+      background: var(--card-alt);
+      border: 2px solid var(--ink);
+      box-shadow: var(--shadow-sm);
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.85rem;
     }
 
-    .cta-bar a {
-      color: var(--accent);
-      font-weight: 600;
-      text-decoration: none;
+    .cta-banner p {
+      font-size: 0.92rem;
+      color: var(--text);
+      font-weight: 500;
+      max-width: 460px;
     }
 
-    .cta-bar a:hover {
-      text-decoration: underline;
-    }
-
+    /* FOOTER */
     footer {
       margin-top: 3rem;
       padding-top: 1.25rem;
-      border-top: 1px solid var(--border);
+      border-top: 2px dashed var(--ink);
       font-size: 0.85rem;
       color: var(--muted);
       display: flex;
@@ -205,27 +376,60 @@
 
     footer a {
       color: var(--text);
-      text-decoration: underline;
+      font-weight: 700;
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 1.3rem;
+      }
+      .avatar-wrap {
+        width: 64px;
+        height: 64px;
+      }
+      .hero-title h1 {
+        font-size: 1.7rem;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <header>
-      <span class="badge">@heymaneki</span>
-      <h1>Maneki</h1>
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <span class="status-pill"><span class="pulse-dot"></span> Open for small jobs</span>
+      <button class="theme-btn" id="themeToggle" type="button">🌙 Dark mode</button>
+    </div>
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-top">
+        <div class="avatar-wrap">
+          <img
+            src="https://github.com/heymaneki.png"
+            alt="Maneki avatar"
+            onerror="this.style.display='none'; this.parentElement.textContent='🐱';"
+          />
+        </div>
+        <div class="hero-title">
+          <h1>Maneki</h1>
+          <span class="handle">@heymaneki</span>
+        </div>
+      </div>
+
       <p class="bio">
         I make small web tools, voice packs, and weird little game assets. One fella doing all the work here—it's AI-assisted to move faster, then cleaned up by hand and tested so you don't have to fix anything.
       </p>
+
       <div class="links">
-        <a class="btn btn-primary" href="https://heymaneki.itch.io" target="_blank" rel="noopener">Itch.io Shop</a>
-        <a class="btn" href="https://heymaneki.gumroad.com" target="_blank" rel="noopener">Gumroad</a>
-        <a class="btn" href="https://github.com/heymaneki" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="mailto:heymaneki@gmail.com">Email Me</a>
+        <a class="btn btn-primary" href="https://heymaneki.itch.io" target="_blank" rel="noopener">Itch.io Shop ↗</a>
+        <a class="btn" href="https://heymaneki.gumroad.com" target="_blank" rel="noopener">Gumroad ↗</a>
+        <a class="btn" href="https://github.com/heymaneki" target="_blank" rel="noopener">GitHub ↗</a>
+        <button class="btn" id="copyEmailBtn" type="button">📋 Copy Email</button>
       </div>
     </header>
 
-    <!-- SECTION 1: SERVICES & CAPABILITIES -->
+    <!-- SECTION 1: WHAT I CAN DO -->
     <section>
       <div class="section-head">
         <h2>What I Can Do</h2>
@@ -234,44 +438,73 @@
 
       <div class="grid-2">
         <div class="card">
-          <div class="card-top">
-            <h3>Small Web Tools &amp; Scripts</h3>
-            <span class="tag">Code</span>
+          <div>
+            <div class="card-top">
+              <div class="card-title-group">
+                <span class="icon-box tag-code" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </span>
+                <h3>Web Tools &amp; Scripts</h3>
+              </div>
+              <span class="tag tag-code">Code</span>
+            </div>
+            <p>Custom calculators, single-page browser tools, automation scripts, and bug cleanup—lightweight and ready to host anywhere.</p>
           </div>
-          <p>Custom calculators, single-page browser tools, automation scripts, and bug cleanup—lightweight and ready to host anywhere.</p>
         </div>
 
         <div class="card">
-          <div class="card-top">
-            <h3>Voiceovers &amp; Audio</h3>
-            <span class="tag">Audio</span>
+          <div>
+            <div class="card-top">
+              <div class="card-title-group">
+                <span class="icon-box tag-audio" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                </span>
+                <h3>Voiceovers &amp; Audio</h3>
+              </div>
+              <span class="tag tag-audio">Audio</span>
+            </div>
+            <p>Clean narration, character voice lines, sound effects, and multi-language dubs delivered as ready-to-drop WAV or MP3 files.</p>
           </div>
-          <p>Clean narration, character voice lines, sound effects, and multi-language dubs delivered as ready-to-drop WAV or MP3 files.</p>
         </div>
 
         <div class="card">
-          <div class="card-top">
-            <h3>Writing, Copy &amp; Research</h3>
-            <span class="tag">Text</span>
+          <div>
+            <div class="card-top">
+              <div class="card-title-group">
+                <span class="icon-box tag-text" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg>
+                </span>
+                <h3>Writing &amp; Research</h3>
+              </div>
+              <span class="tag tag-text">Text</span>
+            </div>
+            <p>Landing page copy, short-form video scripts, product descriptions, and structured research briefs without the usual AI fluff.</p>
           </div>
-          <p>Landing page copy, short-form video scripts, product descriptions, and structured research briefs without the usual AI fluff.</p>
         </div>
 
         <div class="card">
-          <div class="card-top">
-            <h3>Visuals &amp; Digital Packs</h3>
-            <span class="tag">Assets</span>
+          <div>
+            <div class="card-top">
+              <div class="card-title-group">
+                <span class="icon-box tag-asset" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                </span>
+                <h3>Visuals &amp; Asset Packs</h3>
+              </div>
+              <span class="tag tag-asset">Assets</span>
+            </div>
+            <p>Thumbnails, product mockups, simple graphics, and organized template or game asset bundles for creators and small projects.</p>
           </div>
-          <p>Thumbnails, product mockups, simple graphics, and organized template or asset bundles for creators and small projects.</p>
         </div>
       </div>
 
-      <div class="cta-bar">
-        Have something specific or weird in mind? <a href="mailto:heymaneki@gmail.com">Send a quick email</a> with what you're trying to make and I'll let you know if I can knock it out.
+      <div class="cta-banner">
+        <p><strong>Got a weird or specific request?</strong> Tell me what you're trying to make and I'll let you know if I can knock it out.</p>
+        <a class="btn btn-primary" href="mailto:heymaneki@gmail.com">Email Me ↗</a>
       </div>
     </section>
 
-    <!-- SECTION 2: PORTFOLIO / FINISHED WORK -->
+    <!-- SECTION 2: STUFF I'VE MADE -->
     <section>
       <div class="section-head">
         <h2>Stuff I've Made</h2>
@@ -281,36 +514,80 @@
       <div class="grid-2">
         <!-- TEMPLATE FOR LIVE PROJECTS (Copy & uncomment as you ship things):
         <a class="card" href="https://YOUR-LINK-HERE" target="_blank" rel="noopener">
-          <div class="card-top">
-            <h3>Project Name ↗</h3>
-            <span class="tag tag-live">Live Tool</span>
+          <div>
+            <div class="card-top">
+              <h3>Project Name ↗</h3>
+              <span class="tag tag-live">Live</span>
+            </div>
+            <p>Short one-sentence description of what it does.</p>
           </div>
-          <p>Short one-sentence description of what it does.</p>
         </a>
         -->
 
         <div class="card">
-          <div class="card-top">
-            <h3>Voice &amp; Audio Demo Reel</h3>
-            <span class="tag">In the Workshop</span>
+          <div>
+            <div class="card-top">
+              <h3>Voice &amp; Audio Demo Reel</h3>
+              <span class="tag tag-wip">In the Workshop</span>
+            </div>
+            <p>A short sample pack covering narration, character voices, and clean SFX. Dropping soon on Itch.io and Gumroad.</p>
           </div>
-          <p>A short sample pack covering narration, character voices, and clean SFX. Dropping soon on Itch.io and Gumroad.</p>
         </div>
 
         <div class="card">
-          <div class="card-top">
-            <h3>First Free Web Utility</h3>
-            <span class="tag">In the Workshop</span>
+          <div>
+            <div class="card-top">
+              <h3>First Free Web Utility</h3>
+              <span class="tag tag-wip">In the Workshop</span>
+            </div>
+            <p>A lightweight, zero-signup browser tool currently being put together. Will be hosted right here for free.</p>
           </div>
-          <p>A lightweight, zero-signup browser tool currently being put together. Will be hosted right here for free.</p>
         </div>
       </div>
     </section>
 
     <footer>
-      <span>Maneki</span>
-      <span>Contact: <a href="mailto:heymaneki@gmail.com">heymaneki@gmail.com</a></span>
+      <span>Maneki (@heymaneki)</span>
+      <span>Direct email: <a href="mailto:heymaneki@gmail.com">heymaneki@gmail.com</a></span>
     </footer>
   </div>
+
+  <script>
+    // Dark / Light mode toggle with saved preference
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('maneki-theme');
+
+    if (savedTheme === 'dark') {
+      root.setAttribute('data-theme', 'dark');
+      themeToggle.textContent = '☀️ Light mode';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        root.removeAttribute('data-theme');
+        localStorage.setItem('maneki-theme', 'light');
+        themeToggle.textContent = '🌙 Dark mode';
+      } else {
+        root.setAttribute('data-theme', 'dark');
+        localStorage.setItem('maneki-theme', 'dark');
+        themeToggle.textContent = '☀️ Light mode';
+      }
+    });
+
+    // One-tap Copy Email button
+    const copyBtn = document.getElementById('copyEmailBtn');
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('heymaneki@gmail.com');
+        const original = copyBtn.textContent;
+        copyBtn.textContent = '✅ Copied!';
+        setTimeout(() => { copyBtn.textContent = original; }, 1800);
+      } catch {
+        window.location.href = 'mailto:heymaneki@gmail.com';
+      }
+    });
+  </script>
 </body>
 </html>
