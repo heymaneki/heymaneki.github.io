@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maneki — Small Web Tools, Voice Packs & Game Assets</title>
+  <style>
+    :root {
+      --bg: #faf7f2;
+      --card: #ffffff;
+      --text: #262322;
+      --muted: #665f5b;
+      --accent: #e0723c;
+      --accent-hover: #c95f2b;
+      --border: #e6dfd5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2.5rem 1.25rem;
+    }
+
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 2rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #f2e8dc;
+      color: #8a4b27;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+
+    .bio {
+      color: var(--muted);
+      font-size: 1.02rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.55rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      transition: border-color 0.15s ease, transform 0.1s ease;
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      margin: 2rem 0 0.85rem;
+      color: var(--text);
+    }
+
+    .grid {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.15rem 1.25rem;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: var(--bg);
+      padding: 0.15rem 0.55rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    footer a {
+      color: var(--text);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">@heymaneki</span>
+      <h1>Maneki</h1>
+      <p class="bio">
+        I make small web tools, voice packs, and weird little game assets. One fella doing all the work here—it's AI-assisted to move faster, then cleaned up by hand and tested so you don't have to fix anything.
+      </p>
+      <div class="links">
+        <a class="btn btn-primary" href="https://heymaneki.itch.io" target="_blank" rel="noopener">Itch.io Shop</a>
+        <a class="btn" href="https://heymaneki.gumroad.com" target="_blank" rel="noopener">Gumroad</a>
+        <a class="btn" href="https://github.com/heymaneki" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="mailto:heymaneki@gmail.com">Email Me</a>
+      </div>
+    </header>
+
+    <h2>What's on the Shelf</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-top">
+          <h3>Voice &amp; SFX Packs</h3>
+          <span class="tag">Itch.io &amp; Gumroad</span>
+        </div>
+        <p>Commercial-ready character barks, creepy radio transmissions, and UI sound effects with ready-to-drop JSON dialogue files.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <h3>Small Web Utilities</h3>
+          <span class="tag">Free &amp; Custom</span>
+        </div>
+        <p>Fast, single-page calculators, generators, and browser tools with zero account walls or bloat.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <h3>Quick Custom Builds</h3>
+          <span class="tag">Open for Commissions</span>
+        </div>
+        <p>Need a short batch of character voice lines, a custom web calculator, or a cleanup script? Send a quick note with what you need.</p>
+      </div>
+    </div>
+
+    <footer>
+      <span>Maneki</span>
+      <span>Questions or custom work: <a href="mailto:heymaneki@gmail.com">heymaneki@gmail.com</a></span>
+    </footer>
+  </div>
+</body>
+</html>
