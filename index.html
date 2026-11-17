@@ -16,14 +16,6 @@
       --accent: #e06338;
       --accent-hover: #c95128;
       --gold: #f5c451;
-      --code-bg: #e3eef8;
-      --code-text: #1d4e7a;
-      --audio-bg: #fde8df;
-      --audio-text: #9c3818;
-      --text-bg: #e6f4ea;
-      --text-text: #1e6238;
-      --asset-bg: #fef3d6;
-      --asset-text: #855a08;
       --shadow: 4px 4px 0px #1e1b18;
       --shadow-sm: 2px 2px 0px #1e1b18;
     }
@@ -39,14 +31,6 @@
       --accent: #eb7349;
       --accent-hover: #f5845d;
       --gold: #eab308;
-      --code-bg: #1c2d3d;
-      --code-text: #7cc0f8;
-      --audio-bg: #3b221a;
-      --audio-text: #f79d7e;
-      --text-bg: #1a3324;
-      --text-text: #7ee2a4;
-      --asset-bg: #382d14;
-      --asset-text: #facc15;
       --shadow: 4px 4px 0px #0b0a09;
       --shadow-sm: 2px 2px 0px #0b0a09;
     }
@@ -69,7 +53,7 @@
     }
 
     .container {
-      max-width: 720px;
+      max-width: 700px;
       margin: 0 auto;
     }
 
@@ -222,7 +206,7 @@
 
     .grid-2 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
       gap: 0.95rem;
     }
 
@@ -231,7 +215,7 @@
       border: 2px solid var(--ink);
       box-shadow: var(--shadow);
       border-radius: 14px;
-      padding: 1.15rem 1.2rem;
+      padding: 1.15rem 1.25rem;
       text-decoration: none;
       color: inherit;
       display: block;
@@ -252,32 +236,15 @@
       justify-content: space-between;
       align-items: center;
       gap: 0.6rem;
-      margin-bottom: 0.55rem;
-    }
-
-    .card-title-group {
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-    }
-
-    .icon-box {
-      width: 30px;
-      height: 30px;
-      border-radius: 8px;
-      border: 1.5px solid var(--ink);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      margin-bottom: 0.45rem;
     }
 
     .card h3 {
-      font-size: 1rem;
-      line-height: 1.25;
+      font-size: 1.02rem;
+      line-height: 1.3;
     }
 
-    .tag {
+    .tag-live {
       font-size: 0.72rem;
       font-weight: 800;
       text-transform: uppercase;
@@ -285,23 +252,19 @@
       padding: 0.18rem 0.5rem;
       border-radius: 6px;
       border: 1.5px solid var(--ink);
+      background: var(--gold);
+      color: #1e1b18;
       white-space: nowrap;
     }
 
-    .tag-code { background: var(--code-bg); color: var(--code-text); }
-    .tag-audio { background: var(--audio-bg); color: var(--audio-text); }
-    .tag-text { background: var(--text-bg); color: var(--text-text); }
-    .tag-asset { background: var(--asset-bg); color: var(--asset-text); }
-    .tag-live { background: var(--gold); color: #1e1b18; }
-
     .card p {
       color: var(--muted);
-      font-size: 0.92rem;
+      font-size: 0.93rem;
     }
 
     .contact-note {
-      margin-top: 0.9rem;
-      font-size: 0.9rem;
+      margin-top: 1rem;
+      font-size: 0.93rem;
       color: var(--muted);
     }
 
@@ -380,79 +343,55 @@
       </div>
     </header>
 
-    <!-- SECTION 1: WHAT I MAKE & DO -->
+    <!-- SECTION 1: WHAT I CAN HELP WITH -->
     <section>
       <div class="section-head">
-        <h2>What I Make &amp; Do</h2>
+        <h2>What I Can Help With</h2>
       </div>
 
       <div class="grid-2">
         <div class="card">
           <div class="card-top">
-            <div class="card-title-group">
-              <span class="icon-box tag-code" aria-hidden="true">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-              </span>
-              <h3>Browser Tools &amp; Scripts</h3>
-            </div>
-            <span class="tag tag-code">Code</span>
+            <h3>Small Web Tools &amp; Scripts</h3>
           </div>
-          <p>Small calculators, generators, and single-page utilities that run right in your browser with no accounts or bloat.</p>
+          <p>If you need a simple calculator, a random generator, or a single-page tool that does one specific job, I can put it together for you.</p>
         </div>
 
         <div class="card">
           <div class="card-top">
-            <div class="card-title-group">
-              <span class="icon-box tag-audio" aria-hidden="true">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
-              </span>
-              <h3>Voiceovers &amp; Audio</h3>
-            </div>
-            <span class="tag tag-audio">Audio</span>
+            <h3>Voiceovers &amp; Audio</h3>
           </div>
-          <p>Narration, character lines, and sound effects cleaned up and exported as ready-to-use WAV or MP3 files.</p>
+          <p>Character lines, narration, or sound effects for videos and games. I clean up the recordings myself and send over finished WAV or MP3 files.</p>
         </div>
 
         <div class="card">
           <div class="card-top">
-            <div class="card-title-group">
-              <span class="icon-box tag-text" aria-hidden="true">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg>
-              </span>
-              <h3>Writing &amp; Cleanup</h3>
-            </div>
-            <span class="tag tag-text">Text</span>
+            <h3>Writing &amp; Cleanup</h3>
           </div>
-          <p>Short video scripts, product descriptions, and turning messy notes into clear, readable docs.</p>
+          <p>Short video scripts, store descriptions, or taking a pile of messy notes and turning them into something clear and readable.</p>
         </div>
 
         <div class="card">
           <div class="card-top">
-            <div class="card-title-group">
-              <span class="icon-box tag-asset" aria-hidden="true">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              </span>
-              <h3>Graphics &amp; Asset Packs</h3>
-            </div>
-            <span class="tag tag-asset">Assets</span>
+            <h3>Graphics &amp; Asset Packs</h3>
           </div>
-          <p>Simple icons, thumbnails, mockups, and organized starter bundles for small projects.</p>
+          <p>Simple icons, thumbnails, mockups, or bundled asset packs when you just need solid visuals without a huge budget.</p>
         </div>
       </div>
 
       <p class="contact-note">
-        Need a custom one-off job? Email <a href="mailto:heymaneki@gmail.com">heymaneki@gmail.com</a> with what you're trying to make.
+        Working on something weird or have a small job you don't feel like doing yourself? Email me at <a href="mailto:heymaneki@gmail.com">heymaneki@gmail.com</a> and let me know what you need.
       </p>
     </section>
 
-    <!-- SECTION 2: PUBLISHED WORK -->
+    <!-- SECTION 2: THINGS I'VE MADE -->
     <section>
       <div class="section-head">
-        <h2>Stuff I've Made</h2>
+        <h2>Things I've Made</h2>
       </div>
 
       <div class="empty-shelf">
-        Nothing published just yet—this site just went live. First free browser tool and audio pack are being put together now and will show up here with direct links as soon as they're tested.
+        Nothing up here just yet—I literally just set this page up. I'm working on a couple of small tools and audio packs right now, and I'll post the links here as soon as they're actually done.
       </div>
 
       <!-- WHEN YOU SHIP ITEM #1, REPLACE THE .empty-shelf DIV ABOVE WITH THIS GRID:
@@ -460,7 +399,7 @@
         <a class="card" href="https://YOUR-LINK-HERE" target="_blank" rel="noopener">
           <div class="card-top">
             <h3>Actual Project Name ↗</h3>
-            <span class="tag tag-live">Free Tool</span>
+            <span class="tag-live">Free Tool</span>
           </div>
           <p>One honest sentence describing what it actually does.</p>
         </a>
@@ -469,7 +408,7 @@
     </section>
 
     <footer>
-      <span>Maneki</span>
+      <span>Made by Maneki</span>
       <span><a href="mailto:heymaneki@gmail.com">heymaneki@gmail.com</a></span>
     </footer>
   </div>
